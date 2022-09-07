@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate} from "react-router-dom";
 import { Context } from "../..";
 import '../../scss/app.scss'
 import Card from '../components/Card';
@@ -7,6 +8,8 @@ import Slider from '../components/Slider';
 import Topnav from '../components/Topnav';
 
 const HomePage = () => {
+    const id =useNavigate()
+    console.log(id)
     const { device } = useContext(Context)
     return (
         <div className="home-wrapper">
