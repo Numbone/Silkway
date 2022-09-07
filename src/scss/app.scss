@@ -1,0 +1,34 @@
+@use './libs/global';
+
+
+.wrapper__content {
+    background-color: white;
+}
+
+.menu {
+    display: flex;
+    padding: 24px 96px 0 96px;
+    
+    margin: auto;
+
+}
+
+.products {
+    padding: 36px 96px 24px 96px;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.cards {
+    display: flex;
+    padding: 0 96px 24px 96px;
+    justify-content: space-between;
+}
+@media  screen and (max-width: 400px) {
+    .cards {
+        padding: 0 16px 14px 16px;
+    }
+}

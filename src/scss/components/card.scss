@@ -1,0 +1,137 @@
+@import '../libs/variables';
+
+@font-face {
+  font-family: 'Avenir';
+  src: url(../../assets/fonts/AvenirLTStd-Roman.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Avenir-Middle';
+  src: url(../../assets/fonts/AvenirLTStd-Book.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Avenir-Bold';
+  src: url(../../assets/fonts/AvenirLTStd-Black.otf);
+  font-weight: 800;
+}
+
+body {
+  background-color: #E5E5E5;
+}
+
+.card {
+  box-shadow: 0px 4px 12px 0px #0000000A;
+  max-width: 294px;
+  min-height: 352px;
+  margin: 14px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  
+
+  @media screen and (max-width: 400px) {
+    .card {
+        // display: flex;
+        // flex-direction: column;
+        // flex-direction: row;
+        max-width: 200px;
+        max-height: 232px;
+    }
+  }
+
+  .review__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .6em;
+  }
+
+  .review__container .icon {
+    color: $skyline;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-right: 8.5px;
+
+  }
+  
+  .review__container p {
+    font-family: 'Avenir-Bold';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 24px;
+    color:$mid-night;
+    margin: 0 12px 0 12px;
+  }
+  
+  .title {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 24px;
+    color: $gray;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 12px 12px 8px 12px;
+  }
+  
+  .cart {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: $gray;
+    padding: 0px 12px 0px 12px;
+  }
+}
+
+.content {
+  padding-bottom: 12px;
+
+  img {
+    object-fit:cover;
+    overflow: hidden;
+    width: 100%;
+    max-height: 200px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .img {
+    position: relative;
+
+    .info {
+      position: absolute;
+      top: 156px;
+      background: $blur;
+      padding: 4px 8px;
+      margin: 0px 0px 16px 12px;
+      border-radius: 5px;
+      backdrop-filter: blur(3px);
+      opacity: 0.85;
+    }
+  }
+
+
+  .info a {
+    font-family:'Gill Sans', sans-serif;
+    color: $content;
+    text-decoration: none;
+    text-align: center;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 24px;
+  }
+
+  .bag {
+    position: absolute;
+    margin: 14px 15px 0 261px;
+    color: white;
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+@import'../libs/variables';
+
+.slider-wrapper {
+    padding: 24px 24px 24px 24px;
+    max-width: 930px;
+    min-width: 330px;
+    max-height: 586px;
+    min-height: 286px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 882px;
+    
+}
+  
+.slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+}
+  
+.slide {
+    display: inline-block;
+    object-fit:cover;
+    overflow: hidden;
+    height: 502px;
+    width: 100%;
+    border-radius: 5px;
+}
+  
+/* Buttons */
+  
+.slideshowDots {
+    text-align: center;
+}
+  
+.slideshowDot {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 26px 4px 0px;
+    background-color: $pearl;
+}
+  
+.slideshowDot.active {
+    background-color: $dark-skyline;
+}
+  

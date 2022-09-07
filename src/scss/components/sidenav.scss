@@ -1,0 +1,120 @@
+@use '../libs/variables';
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 16px 0 18px 16px;
+}
+
+.nav {
+    max-width: 294px;
+    max-height: 586px;
+    position: absolute;
+    margin: 50px;
+    background: gainsboro;
+    border-radius: 5px;
+}
+
+.nav ul {
+    position: relative;
+    list-style-type: none;
+}
+
+.nav ul li a {
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.15rem;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: black;
+    padding: 9px 16px;
+    height: 50px;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.nav ul li a:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+
+.dropdown img {
+    margin-right: 8px;
+}
+
+.nav ul ul {
+    position: absolute;
+    left: 294px;
+    width: 200px;
+    top: 0;
+    display: none;
+    background: ghostwhite;
+    border-radius: 5px;
+
+}
+
+.nav ul .dropdown {
+    position: relative;
+}
+
+.nav ul .dropdown:hover ul {
+    display: initial;
+}
+
+.nav .card {
+    background: #494A53;
+    /* Big blocks shadow */
+
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    padding: 12px;
+    margin: 18px 16px 16px 16px;
+}
+
+.nav .card .card__title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 32px;
+    /* identical to box height, or 145% */
+
+
+    /* Skyline | Alpha 40 */
+
+    color: #99E4EE;
+}
+
+.nav .card .card__text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21px;
+    /* or 140% */
+
+
+    /* Pearl 2 */
+
+    color: #F4F7FA;
+}
+
+.nav .card a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 24px;
+    text-align: right;
+    /* identical to box height, or 185% */
+
+
+    /* Pearl 4 */
+
+    color: #CDD5E1;
+}

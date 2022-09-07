@@ -1,0 +1,48 @@
+@use '../libs/global';
+@import '../libs/_variables';
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.Auth{
+  @include flexAlignment(center,center);
+  font-family:$gilroyBold;
+
+}
+.Auth__content{
+  display: block;
+
+}
+.address{
+  display: flex;
+}
+.password{
+  display: flex;
+}
+.labelForInput{
+  display: flex;
+  justify-content: flex-end;
+   width:253px;
+  font-family: 'GilroyRegular', sans-serif;
+  align-items: center;
+  margin-bottom: 15px;
+ font-size:18px
+  
+}
+.label{
+  
+}
+.Btn{
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  margin-left: 100px;
+  font-size: 20px;
+}
+.Text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 55px;
+  margin-top: 15px;
+  margin-bottom: 55px;
+}

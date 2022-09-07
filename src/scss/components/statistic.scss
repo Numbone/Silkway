@@ -1,0 +1,86 @@
+.sTopText {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 100px;
+
+}
+
+.sSellContent {
+    margin-top: 30px;
+    margin-left: 190px;
+    width: 1000px;
+    height: 200px;
+
+    .sTopTextSell {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-weight: 600;
+
+        .sTopTextRight {
+            color: #76777E;
+            font-size: 18px;
+            font-weight: 400;
+            display: flex;
+        }
+    }
+
+    .sSellBlock {
+        font-size: 18px;
+        color: #76777E;
+
+        .sSellBlockPrice {
+            font-size: 20px;
+        }
+    }
+}
+
+.sSellBlockContent {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+}
+
+.GraphicTop {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    width: 900px;
+    margin-left: 190px;
+
+    .GraphicTopRight {
+        display: flex;
+        font-size: 16px;
+        font-weight: 600;
+        color: #76777E;
+    }
+}
+
+.AreaBlock {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+
+    .graphicBottomBlockText {
+        font-size: 16px;
+        color: #1B1D28;
+    }
+
+    .graphicBottomBlockPrice {
+        font-size: 18px;
+        color: #1B1D28;
+    }
+}
+
+.AroundText {
+    display: flex;
+    color: #76777E;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.graphicTextLeft {
+    display: flex;
+}

@@ -1,0 +1,110 @@
+.topBasketCard{
+    display: flex;
+    width:990px;
+    justify-content: space-between;
+    margin-left:96px ;
+    padding:30px 46px 0px 20px;
+    margin-bottom: 15px;
+    .topBasketCardText{
+        font-size: 22px;
+        font-weight: 500;
+    }
+}
+.basketCardColor{
+    display: flex;
+    font-size: 16px;
+    color: #494A53;
+    .basketCardColorDi{
+        width: 30px;
+        height: 30px;
+        background-color: #76777E;
+        border-radius: 5px;
+        margin-left: 5px;
+    }
+}
+.basketColorCountContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    .basketText{
+        font-size: 16px;
+        color: #494A53;
+       
+    }
+    .countBasket{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 150px;
+        .divCount{
+            width: 36px;
+            height: 19px;
+            border: 1px solid #00BCD4; 
+            color: #00BCD4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+        .TotalCount{
+            width: 54px;
+            height: 36px;
+            border: 1px solid #00BCD4; 
+            color: #00BCD4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+    }
+}
+
+.BasketCardBottom{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.Korsina{
+    width: 274px;
+    height: 294px;
+    .KorsinaText{
+        font-weight: 500;
+        font-size: 22px;
+        padding: 30px 162px 0 20px;
+    }
+    .KorsinaContent{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 18px 0 20px;
+        color: #76777E;
+
+    }
+}
+.LineKorsina{
+    width: 234px;
+    background-color: #76777E;
+    height: 1px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.Line{
+    width: 920px;
+    background-color: #76777E;
+    height: 1px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+}
+.adressDeliver{
+    margin-left: 120px;
+    width: 954px;
+    height: 117px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #494A53;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+    color: #00BCD4;
+}

@@ -1,0 +1,170 @@
+@import  '../libs/global';
+@import '../libs/_variables';
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.orderBasic{
+    width:1200px;
+    margin-left:96px;
+    display: flex;
+    .leftSideOrder{
+        width:954px;
+        .TopSideOrderTop{
+            font-size: 22px;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .LineOrder{
+            width: 954px;
+            background-color:  #A4A5A9;
+            height: 0.1px;
+            margin-bottom: 20px;
+        }
+    }
+}
+.storeOpenOrder{
+    margin-top: 32px;
+    display: flex;
+    font-size: 18px;
+    color:#494A53;
+    justify-content: space-between;
+    .cardOpenOrderright{
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+    }
+    .cardOpenOrderleft{
+        display: flex;
+        justify-content: space-between;
+        width: 80px;
+    }
+}
+.OpenOrderColor{
+    background-color: #76777E;
+    width: 30px;
+    height: 30px;
+}
+.Logistic{
+    margin-top: 50px;
+    .LogisticTop{
+        width: 924px;
+        display: flex;
+        font-size: 16px;
+        justify-content: space-between;
+        .LogisticText{
+            display: flex;
+        }
+        .LogisticTextBlue{
+            color: #33C9DD;
+        }
+    }
+}
+.ContentCardOpenOrder{
+    width: 954px;
+    .ColumnCardOpenOrder{
+        display: flex;
+        margin-top: 22px;
+        font-size: 16px;
+         color: #76777E;
+        .KeyOrder{
+            width:170px;
+            margin-right:100px ;
+        }
+        .ValueOrder{
+            display: flex;
+            .ValueOrderContent{
+                display: flex;
+                justify-content: space-between;
+                width: 500px;
+            }
+        }
+    }
+}
+.CircleLineContent{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 270px;
+    align-items: center;
+    .circle{
+        background-color: #A4A5A9;
+        border-radius: 15px;
+        width: 15px;
+        height: 15px;
+    }
+    .circleLine{
+        width: 230px;
+        background-color: #DEE6EE;
+        height: 1px;
+    }
+}
+.ContentBottomLine{
+    margin-left :300px;
+    display: flex;
+    font-size: 16px;
+    color: #76777E;
+}
+.ValueOrder{
+    display: flex;
+    width: 500px;
+    flex-wrap: wrap;
+    .CheckBoxOrder{
+        display: flex;
+        .radioOrder{
+            
+            width: 15px;
+            display: flex;
+            margin-top: 4px;
+            border-radius: 15px;
+            height: 15px;
+    
+            border: 1px solid #76777E;
+        }
+        .OrderText{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            margin-left: 5px;
+        }
+    }
+}
+.AdditionalInformation{
+    width: 954px;
+    display: flex;
+    margin-top: 30px;
+    height: 160px;
+    .Addleft{
+        font-size: 16px;
+        width: 158px;
+        color: #76777E;
+        height: 72px;
+
+    }
+    .Addright{
+        margin-left: 115px;
+        width: 476px;
+        height: 62px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #494A53;
+        border: none;
+    }
+}
+.rightSideOrder{
+    margin-left: 50px;
+    width: 274px;
+    height: 227px;
+    .rightDeliverContent{
+        margin-left: 18px;
+        margin-top: 30px;
+        color: #494A53;
+        .OrderRightText{
+            display: flex;
+            width: 237px;
+            justify-content: space-between;
+        }
+    }
+}
