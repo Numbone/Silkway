@@ -8,8 +8,8 @@ import Slider from '../components/Slider';
 import Topnav from '../components/Topnav';
 
 const HomePage = () => {
-    const id =useNavigate()
-    console.log(id)
+    const navigate =useNavigate()
+    console.log(navigate)
     const { device } = useContext(Context)
     return (
         <div className="home-wrapper">
@@ -23,13 +23,14 @@ const HomePage = () => {
 
             <div className="products">Товары с высоким спросом</div>
 
-            <div className="cards">
+            <div className="cards" >
                 {device._devices.map((item) =>
-                    <Card
+                    <Card 
                         img={item.img}
                         title={item.title}
                         price={item.price}
                         rate={item.rate}
+                        id={item.id}
                     />
                 )}
             </div>
@@ -42,6 +43,7 @@ const HomePage = () => {
                         title={item.title}
                         price={item.price}
                         rate={item.rate}
+                        id={item.id}
                     />
                 )}
             </div>

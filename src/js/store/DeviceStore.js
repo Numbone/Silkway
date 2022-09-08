@@ -44,8 +44,14 @@ export default class DeviceStore{
     setDevices(devices){
         this._isAuth=devices
     }
+    setTypes(types){
+        this.types=types
+    }
    
     get Devices(){
         return this._devices
+    }
+    get Types(){
+        return this.types
     }
 }

@@ -2,15 +2,16 @@ import React from "react";
 import '../../scss/components/card.scss';
 import { AiFillStar } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
-
+import { useNavigate} from "react-router-dom";
 const Card = (props) => {
+    const navigate=useNavigate()
     return (
-    <div className="card">
+    <div className="card" >
        
         <div className="content">
             
             <div className="img">
-                <div className="info"><a href="!#">Доп инфо</a></div>
+                <div className="info" onClick={()=>navigate('/device'+'/'+props.id)}><a>Доп инфо</a></div>
                 <div className="bag"><FiShoppingBag /></div>
                 <img src={props.img} alt="" />
             </div>

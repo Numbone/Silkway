@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../scss/components/basketCard.scss';
 import del from '../../assets/images/delete.png';
-import MyButton from '../UI/Button/MyButton';
-import down from '../../assets/images/forwardDown.png';
 import star from '../../assets/images/Frame.png';
 import rec from '../../assets/images/Rectangle.png';
 
 const BasketCard = () => {
+    const [value,setValue]=useState(0)
+    function Increment(){
+        setValue(value+1)
+    }
+    function Decrement(){
+        setValue(value-1)
+    }
+
     return (
         <div>
            
@@ -42,16 +48,16 @@ const BasketCard = () => {
                         </div>
                         <div className="basketColorCountContent">
                             <div className="basketText">
-                                23 ₸/шт
+                                {value} ₸/шт
                             </div>
                             <div className="countBasket">
-                                <div className="divCount">
+                                <div className="divCount" onClick={Decrement}>
                                     -
                                 </div>
                                 <div className="TotalCount">
-                                    12
+                                    {value}
                                 </div>
-                                <div className="divCount">
+                                <div className="divCount" onClick={Increment}>
                                     +
                                 </div>
                             </div>
