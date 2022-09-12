@@ -25,7 +25,8 @@ const Product = () => {
                         <Card   img={item.img}
                                 title={item.title}
                                 price={item.price}
-                                rate={item.rate}/>
+                                rate={item.rate}
+                                key={item.id}/>
                     )}
                     </div>
                 </div>

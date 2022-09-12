@@ -3,21 +3,33 @@ import '../../scss/components/uploadCard.scss';
 import MyButton from '../UI/Button/MyButton';
 import ps from '../../assets/images/Vector.png';
 import pdf from '../../assets/images/PDF.png';
-const UploadCardContent = () => {
-    const [drag, setDrag] = useState()
-    function dragStartHandler(e) {
-        e.preventDefault()
-        setDrag(true)
+import { createDevice } from '../https/deviceAPI';
+import { observer } from 'mobx-react-lite';
+const UploadCardContent = observer(() => {
+    const addDevice=()=>{
+        createDevice(name,category,price,info,file).then(data=>{
+            setName('')
+            setCategory('')
+            setPrice(0)
+            setInfo('')
+            setFile('')
+        })
     }
-    function dragLeaveHandler(e) {
-        e.preventDefault()
-        setDrag(false)
+
+    const [name,setName]=useState('')
+    const [category,setCategory]=useState('')
+    const [price,setPrice]=useState(0)
+    const [info,setInfo]=useState('')
+    const [file,setFile]=useState(null)
+
+    const selectFile=(e)=>{
+        setFile(e.target.files[0])
     }
     return (
         <div>
             <div className="Content">
                 <div className="leftSide">
-                    <div className='Title2'>
+                    <div className='Title2' onClick={addDevice}>
                         <h2>Добавить товар</h2>
                     </div>
 
@@ -26,7 +38,7 @@ const UploadCardContent = () => {
                             Название товара
                         </div>
                         <div className='Input'>
-                            <input className='place' placeholder='placeholder'></input>
+                            <input value={name} onChange={e=>setName(e.target.value)} className='place' placeholder='placeholder'></input>
                         </div>
                     </div>
                     <div className='Container2'>
@@ -34,7 +46,7 @@ const UploadCardContent = () => {
                             Категория товара
                         </div>
                         <div className='Input'>
-                            <input className='place' placeholder='placeholder'></input>
+                            <input value={category} onChange={e=>setCategory(e.target.value)} className='place' placeholder='placeholder'></input>
                         </div>
                     </div>
                     <div className='Container2'>
@@ -42,44 +54,14 @@ const UploadCardContent = () => {
                             Цена за штуку
                         </div>
                         <div className='Input'>
-                            <input className='place' placeholder='placeholder'></input>
+                            <input value={price} onChange={e=>{setPrice(e.target.value)}} className='place' placeholder='placeholder'></input>
                         </div>
                     </div>
                     <div className='ColorCard'>
                         <div className='title'>
                             <div className='Container2'>
-                                <div className='title'>
-                                    Выберите цвета
-                                </div>
-                                <div className='ColorBlock'>
-                                    <div className='ColorContent'>
-                                        <div className='ColorTitle'>
-                                            Цвет 1:
-                                        </div>
-                                        <div className='ColorDiv'>
-
-                                        </div>
-
-                                    </div>
-                                    <div className='ColorContent'>
-                                        <div className='ColorTitle'>
-                                            Цвет 2:
-                                        </div>
-                                        <div className='ColorDiv' style={{backgroundColor:"#FF9B9B"}}>
-
-                                        </div>
-
-                                    </div>
-                                    <div className='ColorContent'>
-                                        <div className='ColorTitle'>
-                                            Цвет 3:
-                                        </div>
-                                        <div className='ColorDiv' style={{backgroundColor:"#FFD699"}}>
-
-                                        </div>
-
-                                    </div>
-                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -88,7 +70,7 @@ const UploadCardContent = () => {
                             Дополнительная информация
                         </div>
                         <div className='Input'>
-                            <input className='place' placeholder='placeholder' style={{ height: "101.59px" }}></input>
+                            <input value={info} onChange={e=>setInfo(e.target.value)} className='place' placeholder='placeholder' style={{ height: "101.59px" }}></input>
                         </div>
                     </div>
                 </div>
@@ -97,7 +79,9 @@ const UploadCardContent = () => {
                         <MyButton> Добавить товар</MyButton>
                     </div>
                     <div className='DragContainer'>
-                        <div className='DragText'>
+                        <input type='file' onChange={selectFile} id='file' style={{display:'none'}}></input>
+                        <label for='file'> 
+                            <div className='DragText'>
                             <div className='DragText Top'>
                                 <strong>Upload Your File</strong>
                             </div>
@@ -106,11 +90,8 @@ const UploadCardContent = () => {
                                 PNG,JPEG,DOCX,PDF
                             </div>
                         </div>
-                        <div
-                            onDragStart={e => dragStartHandler(e)}
-                            onDragLeave={e => dragLeaveHandler(e)}
-                            onDragOver={e => dragStartHandler(e)}
-                            className="DragContainerImage">
+                        
+                        <div className="DragContainerImage">
                             <div className="DragImage">
                                 <img className='Img' src={ps}></img>
                                 <div className="DragText">
@@ -118,97 +99,18 @@ const UploadCardContent = () => {
                                 </div>
                             </div>
                         </div>
+                        </label>
                     </div>
+                   
                     <div className="BottomRight">
-                        <div className='title' style={{ marginLeft: "100px" }}>
-                            Uploading Files
-                        </div>
-                        <div className="UploadingFiles">
-                            <div className="UploadImage">
-                                <img src={pdf} alt="" />
-                            </div>
-                            <div className="UploadContent">
-                                <div className="UploadText">
-                                    <div className="UploadTitle">
-                                        <div className="UploadText">
-                                        Resume.pdf
-                                        </div>
-                                        <div className="UploadText">
-                                        Delete
-                                        </div>
-                                    </div>
-                                    <div className="UploadLine" style={{width:"157px"}}>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="UploadingFiles">
-                            <div className="UploadImage">
-                                <img src={pdf} alt="" />
-                            </div>
-                            <div className="UploadContent">
-                                <div className="UploadText">
-                                    <div className="UploadTitle">
-                                        <div className="UploadText">
-                                        Resume.pdf
-                                        </div>
-                                        <div className="UploadText">
-                                        Delete
-                                        </div>
-                                    </div>
-                                    <div className="UploadLine" style={{backgroundColor:"#00BCD4"}}>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="UploadingFiles">
-                            <div className="UploadImage">
-                                <img src={pdf} alt="" />
-                            </div>
-                            <div className="UploadContent">
-                                <div className="UploadText">
-                                    <div className="UploadTitle">
-                                        <div className="UploadText">
-                                        Resume.pdf
-                                        </div>
-                                        <div className="UploadText">
-                                        Delete
-                                        </div>
-                                    </div>
-                                    <div className="UploadLine" style={{backgroundColor:"#4CAF50"}}>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="UploadingFiles">
-                            <div className="UploadImage">
-                                <img src={pdf} alt="" />
-                            </div>
-                            <div className="UploadContent">
-                                <div className="UploadText">
-                                    <div className="UploadTitle">
-                                        <div className="UploadText">
-                                        Resume.pdf
-                                        </div>
-                                        <div className="UploadText">
-                                        Retry
-                                        </div>
-                                    </div>
-                                    <div className="UploadLine" style={{backgroundColor:"white"}}>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
+                      
                     </div>
                 </div>
             </div>
 
         </div >
     )
-}
+})
 
 export default UploadCardContent

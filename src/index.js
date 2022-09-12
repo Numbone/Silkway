@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import { createRoot } from 'react-dom/client';
+import { REACT_APP_API_URL } from './const';
 import { App } from './js/containers/App';
 import DeviceStore from './js/store/DeviceStore';
 import UserStore from './js/store/UserStore';

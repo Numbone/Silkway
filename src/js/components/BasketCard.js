@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../../scss/components/basketCard.scss';
 import del from '../../assets/images/delete.png';
 import star from '../../assets/images/Frame.png';
 import rec from '../../assets/images/Rectangle.png';
 
-const BasketCard = () => {
+const BasketCard = (props) => {
     const [value,setValue]=useState(0)
     function Increment(){
         setValue(value+1)
@@ -12,7 +12,7 @@ const BasketCard = () => {
     function Decrement(){
         setValue(value-1)
     }
-
+    const {device}=useContext()
     return (
         <div>
            

@@ -4,7 +4,7 @@ import '../../scss/components/basketCard.scss';
 import del from '../../assets/images/delete.png';
 import MyButton from '../UI/Button/MyButton';
 import { NavLink } from 'react-router-dom';
-import rec from '../../assets/images/Rectangle.png';
+
 import exclaim from '../../assets/images/exami.png';
 import gazel from '../../assets/images/gazel.png';
 

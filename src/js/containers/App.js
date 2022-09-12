@@ -8,8 +8,8 @@ import { observer } from 'mobx-react-lite';
 
 
 
-export const App = () => {
-
+export const App = observer(() => {
+    
     return (
         <div className='wrapper'>
 
@@ -23,5 +23,5 @@ export const App = () => {
         </div>
 
     );
-}
+})
 

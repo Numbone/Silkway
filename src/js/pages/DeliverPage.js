@@ -7,7 +7,7 @@ const DeliverPage = () => {
   return (
     <div>
 
-      qweqwqeq
+      qweqwqeq  
            <div className='TopImg'>
         <ProfileTopImage />
       </div   >

@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import GalletyImage from '../components/GalletyImage'
+import { fetchOneDevice } from '../https/deviceAPI'
 
 const DevicePage = () => {
+  const [device1,setDevice]=useState('')
+  const {id}=useParams()
+
+  useEffect(()=>{
+    fetchOneDevice().then(data=>setDevice(data))
+  },[])
+ 
   const device={
     id:1,
     title:'Sell Well is suitable for 2018 BMW 5 Series G30 G38 car high quality universal rear bumper diffuser',
@@ -12,7 +21,12 @@ const DevicePage = () => {
   return (
     <div>
         <div className="gallery_Image">
-          <GalletyImage/>
+          <div className="leftSideGallery">
+              
+          </div>
+          <div className="rightSideGallery">
+
+          </div>
         </div>
     </div>
   )

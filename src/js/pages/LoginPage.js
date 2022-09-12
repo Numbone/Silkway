@@ -1,17 +1,29 @@
-import React, { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../..';
-
-// import AuthContext from '../context/AuthContext';
 import '../../scss/components/login.scss';
+import { login } from '../https/userAPI';
 import MyButton from '../UI/Button/MyButton';
 import MyInput from '../UI/Input/Input';
 
-const LoginPage = () => {
+const LoginPage =observer(() => {
   const {user}=useContext(Context)
+  
+  const signIn = async(email,password) =>{
+    try {
+      let data
+      data= await login(email,password)
+      user.setUser(user)
+      user.setIsAuth(true)
+      navigate('/profile')
+    } catch (e) {
+      alert('net')
+    }
+  }
   const navigate= useNavigate()
-  console.log(navigate)
-
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
   return (
     <div className="Auth">
       
@@ -22,7 +34,7 @@ const LoginPage = () => {
               Адрес электронной почты:
             </div>
           </div>
-          <MyInput placeholder="dsadasdasr@gmail.com"></MyInput>
+          <MyInput value={email} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
 
         </div>
         <div className="password">
@@ -31,11 +43,11 @@ const LoginPage = () => {
               Пароль:
             </div>
           </div>
-          <MyInput placeholder="Введите пароль"></MyInput>
+          <MyInput type='password' value={password} onChange={e=>setPassword(e.target.value)} placeholder="Введите пароль"></MyInput>
 
         </div>
-        <div onClick={()=>user.setIsAuth(true)} className="Btn">
-           <MyButton  onClick={()=>navigate('/profile')} >Войти</MyButton> 
+        <div  className="Btn">
+           <MyButton  onClick={signIn} >Войти</MyButton> 
         </div>
         <div className="Text">
           Нету аккаунта?   <NavLink to="/registration">  Зарегистрируйтесь</NavLink>
@@ -45,5 +57,5 @@ const LoginPage = () => {
     </div>
   )
 }
-
+) 
 export default LoginPage;
