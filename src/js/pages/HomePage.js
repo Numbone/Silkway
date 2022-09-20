@@ -6,14 +6,25 @@ import Card from '../components/Card';
 import Sidebar from '../components/Sidebar';
 import Slider from '../components/Slider';
 import Topnav from '../components/Topnav';
-import { fetchType } from "../https/deviceAPI";
+import { fetchDevice, fetchType } from "../https/deviceAPI";
 
 const HomePage = observer(() => {
     const { device } = useContext(Context)
-
+   
+    const result = async()=>{
+        let data
+        data= await fetchDevice().then(data=>data)
+        console.log(data.data[0])
+        return data
+        
+    }
     useEffect(()=>{
         fetchType().then(data=>device.setTypes(data))
+        result().then(data=>device.setDevices(data.data))
+        
     },[])
+
+   
     return (
         <div className="home-wrapper">
             <Topnav></Topnav>
@@ -25,21 +36,22 @@ const HomePage = observer(() => {
             <div className="products">Товары с высоким спросом</div>
 
             <div className="cards" >
-                {device._devices.map((item) =>
+                {device.devices.map((item) =>
+                    
                     <Card 
-                        img={item.img}
-                        title={item.title}
+                        // img={item.img}
+                        title={item.name}
                         price={item.price}
-                        rate={item.rate}
-                        id={item.id}
-                        key={item.id}
+                        // rate={item.rate}
+                        id={item.category_id}
+                        key={item.users_id}
                     />
                 )}
             </div>
-            <div className="products">Товары для вас</div>
+            <div className="products" ><button onClick={result}>Товары для вас</button></div>
 
-            <div className="cards">
-                {device._devices.map((item) =>
+            <div className="cards" >
+                {device.devices.map((item) =>
                     <Card
                         img={item.img}
                         title={item.title}

@@ -3,16 +3,18 @@ import '../../scss/components/basketCard.scss';
 import del from '../../assets/images/delete.png';
 import star from '../../assets/images/Frame.png';
 import rec from '../../assets/images/Rectangle.png';
+import { Context } from '../..';
 
 const BasketCard = (props) => {
-    const [value,setValue]=useState(0)
+    const [value,setValue]=useState(1)
+    const [price,setPrice]=useState(65)
     function Increment(){
         setValue(value+1)
     }
     function Decrement(){
         setValue(value-1)
     }
-    const {device}=useContext()
+    const {device}=useContext(Context)
     return (
         <div>
            
@@ -26,7 +28,7 @@ const BasketCard = (props) => {
                     </div>
                     <div className='TextContentPrice' style={{ marginTop: '0' }}>
                         <div className='TextContentPriceText'>
-                            65 ₸ - 80 ₸
+                                {price} тг
                         </div>
                         <div className='TextContent Star'>
                             <div className='StarImg'>
@@ -62,7 +64,7 @@ const BasketCard = (props) => {
                                 </div>
                             </div>
                             <div className="basketText">
-                                Итог:1 572 ₸
+                                Итог:{price * value}
                             </div>
                             <div className="topBasketCardImg">
                                 <img src={del} alt="tab" />

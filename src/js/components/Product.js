@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../..'
@@ -8,6 +9,12 @@ import Card from './Card'
 const Product = () => {
     const navigate=useNavigate()
     const { device } = useContext(Context)
+    const addDevice= async()=>{
+        const data= await axios.get('https://api.silkway.systems/api/provider/products/user')
+        console.log(data)
+        return data
+        
+    }
   return (
     <div>
            <div className="profile__content">
@@ -16,7 +23,7 @@ const Product = () => {
                         <div onClick={()=>{
                             navigate("/uploadItem")
                         }} className="pc__btn">
-                            <MyButton>Добавить товар</MyButton>
+                            <MyButton onClick={addDevice}>Добавить товар</MyButton>
                         </div>
                     </div>
                     <div className="card_products"  >

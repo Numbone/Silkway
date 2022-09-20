@@ -6,39 +6,69 @@ import '../../scss/components/registration.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '../..';
 import { registration } from '../https/userAPI';
+import axios from 'axios';
 
 const Registrationpage = () => {
     const {user}=useContext(Context )
     const navigate=useNavigate()
-    const signIn = async(email,password,role,verifyPassword,company,IIN,FIO,phone) =>{
-        try {
+    //  const customConfig = {
+    //     headers: {
+    //     'Content-Type': 'application/json'
+    //     }
+    // };
+    // const all=JSON.stringify({address},{biiniin},{name},{organName},{password},{phone},{role},{username})
+    
+    // const  signIn= async (address ,biiniin,name,organName,password,phone,role,username)=>{
+    //     const customConfig = {
+    //         headers: {
+    //         'Content-Type': 'application/json'
+    //         }
+    //     }
+    //     const {data}=await axios.post('https://api.silkway.systems/sign-up',all,customConfig)
+    //     return data
+    // }
+    
+    
+    // const address =JSON.stringify(address1)
+    // const biiniin =JSON.stringify(biiniin1)
+    // const name =JSON.stringify(name1)
+    // const organName =JSON.stringify(organName1)
+    // const password =JSON.stringify(password1)
+    // const phone =JSON.stringify(phone1)
+    // const role =JSON.stringify(role1)
+    // const username =JSON.stringify(username1)
+
+    const signIn = async() =>{
+        
             let data
-            data = await registration(email,password,role,verifyPassword,company,IIN,FIO,phone)
-            user.setUser(user)
-            user.setIsAuth(true)
-            navigate('/login')
-        } catch (e) {
-            alert('error')
-        }
+            
+            data = await registration(address,biiniin,name,organName,password,phone,role,username)
+            // user.setUser(user)
+            // user.setIsAuth(true)
+            // navigate('/login')
+            console.log(data)
+        
         
       }
   
     
-    const [role,setRole]=useState('customer')
-    const [email,setEmail]=useState('')
+    const [role,setRole]=useState('seller')
+    const [address,setEmail]=useState('')
     const [password,setPassword]=useState('')
-    const [verifyPassword,setVerifyPassword]=useState('')
-    const [company,setCompany]=useState('')
-    const [IIN,setIIN]=useState('')
-    const [FIO,setName]=useState('')
-    const [phone,setPhone]=useState('')  
+    const [organName,setVerifyPassword]=useState('')
+    const [name,setCompany]=useState('')
+    const [biiniin,setIIN]=useState('')
+    const [username,setName]=useState('')
+    const [phone,setPhone]=useState('') 
+    
+   
     function setRoleCustomer(){
-        setRole('customer')
+        setRole('seller')
     }
     function setRoleProvider(){
         setRole('provider')
     }
-    console.log(role)
+    
     return (
         <div>
             <>
@@ -61,7 +91,7 @@ const Registrationpage = () => {
                         <div className="Registrtaion__content__right">
                             <div className="Title">
                                 <div className="Title__content">
-                                    <div className="order" onClick={setRoleCustomer} style={role ==='customer' ? {  backgroundColor:'#33C9DD'} : {backgroundColor:'white',color:'black' , border: '1px solid  #494A53'}}>
+                                    <div className="order" onClick={setRoleCustomer} style={role ==='seller' ? {  backgroundColor:'#33C9DD'} : {backgroundColor:'white',color:'black' , border: '1px solid  #494A53'}}>
                                         Заказчик
                                     </div>
                                     <div className="deliver" onClick={setRoleProvider} style={role ==='provider' ? {  backgroundColor:'#33C9DD',border:'none',borderRadius:'0 5px 5px 0',color:'white'} : {backgroundColor:'white',color:'black' , border: '1px solid  #494A53'}}>
@@ -69,12 +99,12 @@ const Registrationpage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <MyInput value={email} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
+                            <MyInput value={address} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
                             <MyInput type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Пожалуйста установите пароль"></MyInput>
-                            <MyInput type="password" value={verifyPassword} onChange={e=>setVerifyPassword(e.target.value)} placeholder="Пожалуйста подтвердите ваш пароль снова"></MyInput>
-                            <MyInput value={company} onChange={e=>setCompany(e.target.value)} placeholder="Должна быть юридически зарегистрирова.."></MyInput>
-                            <MyInput value={IIN} onChange={e=>setIIN(e.target.value)} placeholder="Укажите ваш BIN / ИИН"></MyInput>
-                            <MyInput value={FIO} onChange={e=>setName(e.target.value)} placeholder="Укажите ваше ФИО"></MyInput>
+                            <MyInput type="password" value={organName} onChange={e=>setVerifyPassword(e.target.value)} placeholder="Пожалуйста подтвердите ваш пароль снова"></MyInput>
+                            <MyInput value={name} onChange={e=>setCompany(e.target.value)} placeholder="Должна быть юридически зарегистрирова.."></MyInput>
+                            <MyInput value={biiniin} onChange={e=>setIIN(e.target.value)} placeholder="Укажите ваш BIN / ИИН"></MyInput>
+                            <MyInput value={username} onChange={e=>setName(e.target.value)} placeholder="Укажите ваше ФИО"></MyInput>
                             <MyInput value={phone} onChange={e=>setPhone(e.target.value)} placeholder="Введите ваш номер телефона"></MyInput>
                             <div className="negiotate">
                                 <input type="radio" className='radio' />

@@ -22,19 +22,9 @@ const Basket = () => {
           </div>
         <BasketCard />
         <BasketCard />
-        <div className="topBasketCard">
-          <div className="topBasketCardText">
-          TOO - ААА
-          </div>
-          <div className="topBasketCardImg">
-            <img src={del} alt="tab" />
-          </div>
-        </div>
-        <div className='Line' >
-
-</div>
-        <BasketCard />
-        <BasketCard />
+       
+        
+        
       </div>
       <div className="rightSideBasket">
         <div className="Korsina">

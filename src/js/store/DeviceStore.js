@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx"
 export default class DeviceStore{
     constructor(){
-        this.types=[
+        this._types=[
             {id:1,name:"Notebook"},
             {id:2,name:"Earphone"},
             {id:3,name:"phone"}]
@@ -40,19 +40,19 @@ export default class DeviceStore{
         makeAutoObservable(this)
     }
     setDevices(devices){
-        this._isAuth=devices
+        this._devices=devices
     }
     setTypes(types){
-        this.types=types
+        this._types=types
     }
     setSelectedType(type){
         this._selectedType=type
     }
-    get Devices(){
+    get devices(){
         return this._devices
     }
-    get Types(){
-        return this.types
+    get types(){
+        return this._types
     }
     get selectedType(){
         return this._selectedType

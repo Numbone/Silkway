@@ -8,8 +8,7 @@ import Footer from '../components/Footer';
 import HomePage from '../pages/HomePage';
 
 const AppRouter = observer(() => {
-  const { user } = useContext(Context)
-  console.log(user, "approuter")
+  const { user } = useContext(Context)  
   return (
     <>
 

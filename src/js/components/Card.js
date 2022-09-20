@@ -4,6 +4,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
 import { useNavigate} from "react-router-dom";
 const Card = (props) => {
+    
     const navigate=useNavigate()
     return (
     <div className="card" >
@@ -13,7 +14,7 @@ const Card = (props) => {
             <div className="img">
                 <div className="info" onClick={()=>navigate('/device'+'/'+props.id)}><a>Доп инфо</a></div>
                 <div className="bag"><FiShoppingBag /></div>
-                <img src={props.img} alt="" />
+            <img src={props.img} alt="" />
             </div>
             <div className="title">
                 {props.title}
@@ -22,7 +23,7 @@ const Card = (props) => {
                 <p className="price">{props.price}</p>
                 <p className="price__rate">
                     <AiFillStar className="icon" />
-                    {props.rate}</p>
+                  {props.rate}</p>
             </div>
             
             <div className="cart">

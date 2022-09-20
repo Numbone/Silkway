@@ -11,13 +11,19 @@ export const fetchType= async ()=>{
     return data
 }
 
-export const createDevice = async (device)=>{
-    const {data}= await $authHost.post('api/device' ,device)
+export const createDevice = async (name,category,price,info,img)=>{
+    const {data}= await $authHost.post('api/device' ,{name,category,price,info,img})
     return data
 }
 
 export const fetchDevice= async ()=>{
-    const {data} = await $host.get('api/device' )
+    const {data} = await $host.get('products/all' ,{
+        headers: {
+            'content-type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+          }
+    })
     return data
 }
 

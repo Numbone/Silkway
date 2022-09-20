@@ -5,15 +5,19 @@ import ps from '../../assets/images/Vector.png';
 import pdf from '../../assets/images/PDF.png';
 import { createDevice } from '../https/deviceAPI';
 import { observer } from 'mobx-react-lite';
+import axios from 'axios';
 const UploadCardContent = observer(() => {
-    const addDevice=()=>{
-        createDevice(name,category,price,info,file).then(data=>{
-            setName('')
-            setCategory('')
-            setPrice(0)
-            setInfo('')
-            setFile('')
+    const addDevice= async()=>{
+        const data= await axios.get('https://api.silkway.systems/api/provider/products/user',{
+            withCredentials:true,
+            headers: {
+                'Access-Control-Allow-Origin': '*', 
+                'Content-Type': 'application/json'
+              },
         })
+        console.log(data)
+        return data
+        
     }
 
     const [name,setName]=useState('')
@@ -29,8 +33,8 @@ const UploadCardContent = observer(() => {
         <div>
             <div className="Content">
                 <div className="leftSide">
-                    <div className='Title2' onClick={addDevice}>
-                        <h2>Добавить товар</h2>
+                    <div className='Title2' >
+                        <h2>Добавить товар1</h2>
                     </div>
 
                     <div className='Container2'>
@@ -76,7 +80,7 @@ const UploadCardContent = observer(() => {
                 </div>
                 <div className="rightSide">
                     <div className='TopRight'>
-                        <MyButton> Добавить товар</MyButton>
+                        <MyButton onClick={addDevice}> Добавить товар</MyButton>
                     </div>
                     <div className='DragContainer'>
                         <input type='file' onChange={selectFile} id='file' style={{display:'none'}}></input>

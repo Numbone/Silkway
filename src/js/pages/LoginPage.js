@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import { Context } from '../..';
 import '../../scss/components/login.scss';
 import { login } from '../https/userAPI';
@@ -10,19 +12,39 @@ import MyInput from '../UI/Input/Input';
 const LoginPage =observer(() => {
   const {user}=useContext(Context)
   
-  const signIn = async(email,password) =>{
-    try {
+  const signIn = async() =>{
+    // try {
       let data
-      data= await login(email,password)
-      user.setUser(user)
-      user.setIsAuth(true)
-      navigate('/profile')
-    } catch (e) {
-      alert('net')
-    }
+      data = await login(username,password)
+      // user.setUser(user)
+      // user.setIsAuth(true)
+
+      // console.log(data.split)
+  
+      // navigate('/profile')
+    //   const REACT_APP_API_URL='https://api.silkway.systems/'
+    //   const instance=axios.create({
+        
+    //     baseURL:REACT_APP_API_URL
+    //   })
+    //   const data=instance.post('auth/sign-in' ,{username,password },{
+      
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+      
+  
+    // })
+      
+    // console.log(JSON.stringify(data.data,['username','role','access_token','refresh_token']))
+    console.log(data.accses)
+    
+    // } catch (e) {
+    //   alert('net')  
+    // }
   }
   const navigate= useNavigate()
-  const [email,setEmail]=useState('')
+  const [username,setEmail]=useState('')
   const [password,setPassword]=useState('')
   return (
     <div className="Auth">
@@ -34,7 +56,7 @@ const LoginPage =observer(() => {
               Адрес электронной почты:
             </div>
           </div>
-          <MyInput value={email} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
+          <MyInput value={username} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
 
         </div>
         <div className="password">
