@@ -27,7 +27,8 @@
 .cards {
     display: flex;
     padding: 0 96px 24px 96px;
-    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
 }
 @media  screen and (max-width: 400px) {
     .cards {

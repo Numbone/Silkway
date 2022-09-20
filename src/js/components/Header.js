@@ -49,7 +49,7 @@ const Header = observer(() => {
 
                     {user.isAuth ?
                         <div>
-                            <NavLink to="/profile"> {user.role} . {user.user}</NavLink>
+                            <NavLink to="/profile"> NameSeller</NavLink>
                         </div>
                         :
                         <div  style={{width:'300px',display:'flex'}}>

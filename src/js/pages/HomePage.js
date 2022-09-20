@@ -11,17 +11,17 @@ import { fetchDevice, fetchType } from "../https/deviceAPI";
 const HomePage = observer(() => {
     const { device } = useContext(Context)
    
-    const result = async()=>{
-        let data
-        data= await fetchDevice().then(data=>data)
-        return data
+    // const result = async()=>{
+    //     let data
+    //     data= await fetchDevice().then(data=>data)
+    //     return data
         
-    }
-    useEffect(()=>{
-    // fetchType().then(data=>device.setTypes(data))
-        result().then(data=>device.setDevices(data.data))
+    // }
+    // useEffect(()=>{
+    // // fetchType().then(data=>device.setTypes(data))
+    //     result().then(data=>device.setDevices(data.data))
         
-    },[])
+    // },[])
 
    
     return (
@@ -38,12 +38,13 @@ const HomePage = observer(() => {
                 {device.devices.map((item) =>
                     
                     <Card 
-                        // img={item.img}
+                        img={item.img}
                         title={item.name}
                         price={item.price}
-                        // rate={item.rate}
-                        id={item.category_id}
-                        key={item.users_id}
+                        rate={item.rate}
+                        // id={item.category_id}
+                        // key={item.users_id}
+                        key={item.id}
                     />
                 )}
             </div>

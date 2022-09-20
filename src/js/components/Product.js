@@ -11,11 +11,13 @@ const Product = () => {
     const navigate=useNavigate()
     const { device } = useContext(Context)
     const fetchProviderProduct= async()=>{
-            const {data} =await $authHost.get('api/provider/products/user')
-            console.log(data.data)
-
+            // const data =await $authHost.get('api/provider',{
+                
+            // })
+            // console.log(data)
+           
         
-    }
+    }   
     // useEffect(()=>{
     //     fetchProviderProduct().then(data=>device.setProviderDevice(data.data))
     // },[])
@@ -25,7 +27,7 @@ const Product = () => {
                     <div className="pc__top">
                         <div className="products__profile">Товары</div>
                         <div onClick={()=>{
-                            // navigate("/uploadItem")
+                            navigate("/uploadItem")
                         }} className="pc__btn">
                             <MyButton onClick={fetchProviderProduct}>Добавить товар</MyButton>
                         </div>

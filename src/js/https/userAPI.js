@@ -16,7 +16,9 @@ const{ data} = await $host.post('auth/sign-in' ,{username,password })
     return data
 }
 export const check = async ()=>{
-    const {data} = await $authHost.get('api/auth/check' )
-    localStorage.setItem('token',data.token)
+    const {data} = await $authHost.get('refresh',{
+        withCredentials:true
+    } )
+    localStorage.setItem('token',data.tokens.access_token)
     return (data.token)
 }
