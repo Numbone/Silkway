@@ -12,7 +12,7 @@ export const registration = async (address ,biiniin,name,organName,password,phon
 export const login = async (username,password)=>{
    
 const{ data} = await $host.post('auth/sign-in' ,{username,password })
-    localStorage.setItem('token',data.accses)
+    localStorage.setItem('token',data.tokens.access_token)
     return data
 }
 export const check = async ()=>{

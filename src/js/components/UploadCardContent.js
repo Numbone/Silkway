@@ -6,18 +6,16 @@ import pdf from '../../assets/images/PDF.png';
 import { createDevice } from '../https/deviceAPI';
 import { observer } from 'mobx-react-lite';
 import axios from 'axios';
+import { $authHost } from '../https';
 const UploadCardContent = observer(() => {
     const addDevice= async()=>{
-        const data= await axios.get('https://api.silkway.systems/api/provider/products/user',{
-            withCredentials:true,
-            headers: {
-                'Access-Control-Allow-Origin': '*', 
-                'Content-Type': 'application/json'
-              },
-        })
-        console.log(data)
-        return data
-        
+        // const data= $authHost.get("api/provider",{
+        // headers: {
+        //           'Content-Type': 'application/json'
+        //         }})
+        // console.log(data.split('/[^{}]+/g'))
+        // return data
+        // a
     }
 
     const [name,setName]=useState('')

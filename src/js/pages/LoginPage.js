@@ -11,41 +11,19 @@ import MyInput from '../UI/Input/Input';
 
 const LoginPage =observer(() => {
   const {user}=useContext(Context)
-  
-  const signIn = async() =>{
-    // try {
-      let data
-      data = await login(username,password)
-      // user.setUser(user)
-      // user.setIsAuth(true)
-
-      // console.log(data.split)
-  
-      // navigate('/profile')
-    //   const REACT_APP_API_URL='https://api.silkway.systems/'
-    //   const instance=axios.create({
-        
-    //     baseURL:REACT_APP_API_URL
-    //   })
-    //   const data=instance.post('auth/sign-in' ,{username,password },{
-      
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-      
-  
-    // })
-      
-    // console.log(JSON.stringify(data.data,['username','role','access_token','refresh_token']))
-    console.log(data.accses)
-    
-    // } catch (e) {
-    //   alert('net')  
-    // }
-  }
   const navigate= useNavigate()
   const [username,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const signIn = async() =>{
+      let data
+      data = await login(username,password)
+      user.setUser(data.users.username)
+      user.setIsAuth(true)
+      user.setRole(data.users.role)
+      navigate("/profile")
+      console.log(data)
+}
+
   return (
     <div className="Auth">
       

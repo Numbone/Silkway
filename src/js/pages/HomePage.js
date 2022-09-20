@@ -14,12 +14,11 @@ const HomePage = observer(() => {
     const result = async()=>{
         let data
         data= await fetchDevice().then(data=>data)
-        console.log(data.data[0])
         return data
         
     }
     useEffect(()=>{
-        fetchType().then(data=>device.setTypes(data))
+    // fetchType().then(data=>device.setTypes(data))
         result().then(data=>device.setDevices(data.data))
         
     },[])
@@ -48,7 +47,7 @@ const HomePage = observer(() => {
                     />
                 )}
             </div>
-            <div className="products" ><button onClick={result}>Товары для вас</button></div>
+            <div className="products" >Товары для вас</div>
 
             <div className="cards" >
                 {device.devices.map((item) =>

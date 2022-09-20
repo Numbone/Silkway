@@ -13,6 +13,7 @@ import { observer } from "mobx-react-lite";
 
 const Header = observer(() => {
     const { user } = useContext(Context)
+    console.log(user)
     return (
         <div className="header-wrapper">
             <div className='headernav'>
@@ -48,7 +49,7 @@ const Header = observer(() => {
 
                     {user.isAuth ?
                         <div>
-                            <NavLink to="/profile"> Namesdfsfdfdfdsf</NavLink>
+                            <NavLink to="/profile"> {user.role} . {user.user}</NavLink>
                         </div>
                         :
                         <div  style={{width:'300px',display:'flex'}}>
