@@ -40,9 +40,9 @@ const Header = observer(() => {
                 </div>
 
                 <div className="header__menu">
-                    <a href="!#"><BsBagCheck className="icon" />
+                    <NavLink to='/order' href="!#"><BsBagCheck className="icon" />
                         Заказы
-                    </a>
+                    </NavLink>
                     <NavLink to="/basket"><FiShoppingBag className="icon" />
                         Корзина
                     </NavLink>

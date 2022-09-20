@@ -1,9 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../../scss/components/dilever.scss';
 import MyButton from '../UI/Button/MyButton';
 
 const DeliverCard = () => {
+  const navigate=useNavigate()
+  const navi=()=>{
+    navigate('/order')
+  }
   return (
     <div style={{marginTop:'30px'}}>
         <div className="dileverCard">
@@ -40,7 +44,7 @@ const DeliverCard = () => {
           </div>
         </div>
         <div style={{marginTop:"10px"}}>
-          <MyButton><NavLink style={{textDecoration:"none",color:'white'}} to="/order"> Открыть заказ </NavLink></MyButton>
+          <MyButton onClick={navi}><NavLink style={{textDecoration:"none",color:'white'}} to="/order"> Открыть заказ </NavLink></MyButton>
         </div>
       </div>
     </div>

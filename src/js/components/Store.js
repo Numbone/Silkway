@@ -3,9 +3,13 @@ import MyButton from '../UI/Button/MyButton'
 import Card from './Card'
 import '../../scss/components/store.scss';
 import StoreCard from './StoreCard';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Store = () => {
+  const navigate=useNavigate()
+  const navi=()=>{
+    navigate('/uploaditem')
+  }
   return (
     <div >
       <div className='storeTopSide'>
@@ -13,7 +17,7 @@ const Store = () => {
           Склад
         </div>
         <div>
-          <MyButton style={{ fontSize: "14px" }}>Добавить товар</MyButton>
+          <MyButton onClick={navi} style={{ fontSize: "14px" }}>Добавить товар</MyButton>
         </div>
       </div>
       <div className='CountStore'>

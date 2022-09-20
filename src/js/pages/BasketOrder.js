@@ -3,12 +3,16 @@ import BasketCard from '../components/BasketCard';
 import '../../scss/components/basketCard.scss';
 import del from '../../assets/images/delete.png';
 import MyButton from '../UI/Button/MyButton';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import exclaim from '../../assets/images/exami.png';
 import gazel from '../../assets/images/gazel.png';
 
 const BasketOrder = () => {
+    const navigate=useNavigate()
+    const navi=()=>{
+        navigate('/profile')
+    }
     return (
         <div style={{ display: "flex" }}>
             <div className="leftSideBasket">
@@ -210,7 +214,7 @@ const BasketOrder = () => {
                         </div>
                     </div>
                     <div>
-                        <MyButton style={{ width: '225px', fontSize: '16px', marginTop: '15px' }}><NavLink style={{ textDecoration: 'none', color: 'white' }} to="/basket2">Оплатить заказ</NavLink></MyButton>
+                        <MyButton onClick={navi} style={{ width: '225px', fontSize: '16px', marginTop: '15px' }}><NavLink style={{ textDecoration: 'none', color: 'white' }} to="/basket2">Оплатить заказ</NavLink></MyButton>
                     </div>
                 </div>
             </div>

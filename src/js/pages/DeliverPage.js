@@ -6,8 +6,6 @@ import ProfileTopImage from '../components/ProfileTopImage'
 const DeliverPage = () => {
   return (
     <div>
-
-      qweqwqeq  
            <div className='TopImg'>
         <ProfileTopImage />
       </div   >

@@ -5,6 +5,7 @@ import '../../scss/app.scss'
 import Footer from '../components/Footer';
 import AppRouter from './AppRouter';
 import { observer } from 'mobx-react-lite';
+import Test from '../components/Test';
 
 
 
@@ -14,7 +15,9 @@ export const App = observer(() => {
         <div className='wrapper'>
 
             <BrowserRouter>
+            <Test/>
                 <Header />
+               
                 <div className="wrapper__content">
                     <AppRouter />
                 </div>

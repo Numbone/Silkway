@@ -7,7 +7,9 @@ import { createDevice } from '../https/deviceAPI';
 import { observer } from 'mobx-react-lite';
 import axios from 'axios';
 import { $authHost } from '../https';
+import { useNavigate } from 'react-router-dom';
 const UploadCardContent = observer(() => {
+    const navigate=useNavigate()
     const addDevice= async()=>{
         // const data= $authHost.get("api/provider",{
         // headers: {
@@ -16,6 +18,7 @@ const UploadCardContent = observer(() => {
         // console.log(data.split('/[^{}]+/g'))
         // return data
         // a
+        navigate('/profile')
     }
 
     const [name,setName]=useState('')
