@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b83e32d2.css",
+    "main.js": "/static/js/main.720aca75.js",
+    "static/media/Frame9.png": "/static/media/Frame9.515d3bf4e7ec7ce152de.png",
+    "static/media/profileAvatar.png": "/static/media/profileAvatar.b8b09219970b6287ae0e.png",
+    "static/media/AvenirLTStd-Black.otf": "/static/media/AvenirLTStd-Black.7ce894e12078ca8c5134.otf",
+    "static/media/AvenirLTStd-Book.otf": "/static/media/AvenirLTStd-Book.813557df4c7a90b1a474.otf",
+    "static/media/AvenirLTStd-Roman.otf": "/static/media/AvenirLTStd-Roman.0bfb049d9455e81fd1da.otf",
+    "static/media/Rectangle.png": "/static/media/Rectangle.5a7a0d1c515cfb2c0191.png",
+    "static/media/logo.svg": "/static/media/logo.4ae042d08347db0e9a53f01628193d2b.svg",
+    "static/media/Logo2.svg": "/static/media/Logo2.407855879bf5ec0b1f86de72921510be.svg",
+    "index.html": "/index.html",
+    "main.b83e32d2.css.map": "/static/css/main.b83e32d2.css.map",
+    "main.720aca75.js.map": "/static/js/main.720aca75.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b83e32d2.css",
+    "static/js/main.720aca75.js"
+  ]
+}
