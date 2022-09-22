@@ -24,8 +24,8 @@ body {
 
 .card {
   box-shadow: 0px 4px 12px 0px #0000000A;
-  max-width: 250px;
-  min-height: 352px;
+  width: 250px;
+  max-height: 352px;
   margin: 14px;
   border-radius: 5px;
   background-color: white;
@@ -117,7 +117,7 @@ body {
   }
 
 
-  .info a {
+  .info span{
     font-family:'Gill Sans', sans-serif;
     color: $content;
     text-decoration: none;
@@ -129,9 +129,9 @@ body {
   }
 
   .bag {
-    position: absolute;
-    margin: 14px 15px 0 251px;
-    color: white;
+   position: absolute;
+   margin:14px 0 12px 170px;
+    color: black;
     font-size: 20px;
   }
 }

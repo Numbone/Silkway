@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { observer } from 'mobx-react-lite'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../..'
@@ -7,20 +8,21 @@ import MyButton from '../UI/Button/MyButton'
 import Card from './Card'
 
 
-const Product = () => {
+const Product = observer(() => {
     const navigate=useNavigate()
     const { device } = useContext(Context)
     const fetchProviderProduct= async()=>{
-            // const data =await $authHost.get('api/provider',{
-                
-            // })
-            // console.log(data)
-           
-        
+        const {data} =await $authHost.get('api/provider/',{
+                "Access-Control-Allow-Origin": "*",
+            })
+            console.log(data.products)
+            return data.products.data
     }   
-    // useEffect(()=>{
-    //     fetchProviderProduct().then(data=>device.setProviderDevice(data.data))
-    // },[])
+    useEffect(()=>{
+        fetchProviderProduct().then(item=>device.setProviderDevice(item))
+       
+    },[])
+   
   return (
     <div>
            <div className="profile__content">
@@ -29,22 +31,26 @@ const Product = () => {
                         <div onClick={()=>{
                             navigate("/uploadItem")
                         }} className="pc__btn">
-                            <MyButton onClick={fetchProviderProduct}>Добавить товар</MyButton>
+                            <MyButton  >Добавить товар</MyButton>
                         </div>
                     </div>
                     <div className="card_products"  >
-                    {device._devices.map(item=>
+                    {device._providerDevice.map(item=>
                     
-                        <Card   img={item.img}
-                                title={item.title}
+                        <Card   img={item.image_path}
+                                title={item.name}
                                 price={item.price}
                                 rate={item.rate}
-                                key={item.id}/>
+                                key={item.id}
+                                status={item.status}
+                                description={item.description}
+                                id={item.id}
+                                />
                     )}
                     </div>
                 </div>
     </div>
   )
-}
+})
 
 export default Product

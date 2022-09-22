@@ -8,30 +8,58 @@ import { observer } from 'mobx-react-lite';
 import axios from 'axios';
 import { $authHost } from '../https';
 import { useNavigate } from 'react-router-dom';
+import { type } from '@testing-library/user-event/dist/type';
 const UploadCardContent = observer(() => {
+    const category_id=1
+    const unit_id=1
+   
     const navigate=useNavigate()
-    const addDevice= async()=>{
-        // const data= $authHost.get("api/provider",{
-        // headers: {
-        //           'Content-Type': 'application/json'
-        //         }})
-        // console.log(data.split('/[^{}]+/g'))
-        // return data
-        // a
-        navigate('/profile')
-    }
-
+   
     const [name,setName]=useState('')
     const [category,setCategory]=useState('')
-    const [price,setPrice]=useState(0)
-    const [info,setInfo]=useState('')
+    const [price,setPrice]=useState()
+    const [description,setInfo]=useState('')
+    const [counts,setCounts]=useState()
     const [file,setFile]=useState(null)
-
+   console.log(typeof(price))
+   console.log(price)
     const selectFile=(e)=>{
         setFile(e.target.files[0])
     }
+    console.log(file)
+    const addDevice= async(e)=>{
+        e.preventDefault()
+            let formData= new FormData()
+
+            formData.append('category_id',category_id)
+            formData.append('counts',counts)
+            formData.append('description',description)
+            formData.append('name',name)
+            formData.append('price',price)
+            formData.append('unit_id',unit_id)
+            formData.append('file',file)
+            axios({
+                url:`https://api.silkway.systems/api/provider/products/create`,
+                method:'POST',
+                headers:  {
+                    Authorization :`Bearer ${localStorage.getItem('token')}`
+                },
+                data:formData
+            }).then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        // let data
+        //  data= await $authHost.post('api/provider/products/create',{category_id,counts,description,name,price,unit_id,file})
+        // console.log(data)
+        // return data
+    }
+
     return (
-        <div>
+        <form>
             <div className="Content">
                 <div className="leftSide">
                     <div className='Title2' >
@@ -51,7 +79,7 @@ const UploadCardContent = observer(() => {
                             Категория товара
                         </div>
                         <div className='Input'>
-                            <input value={category} onChange={e=>setCategory(e.target.value)} className='place' placeholder='placeholder'></input>
+                            <input placeholder='0' value={category} onChange={e=>setCategory(e.target.value)} className='place' placeholder='placeholder'></input>
                         </div>
                     </div>
                     <div className='Container2'>
@@ -59,7 +87,15 @@ const UploadCardContent = observer(() => {
                             Цена за штуку
                         </div>
                         <div className='Input'>
-                            <input value={price} onChange={e=>{setPrice(e.target.value)}} className='place' placeholder='placeholder'></input>
+                            <input placeholder='0'  value={(price)} onChange={e=>{setPrice(Number(e.target.value))}} className='place' placeholder='placeholder'></input>
+                        </div>
+                    </div>
+                    <div className='Container2'>
+                        <div className='title'>
+                            Количество товара
+                        </div>
+                        <div className='Input'>
+                            <input  value={counts} onChange={e=>{setCounts(Number(e.target.value))}} className='place' placeholder='placeholder'></input>
                         </div>
                     </div>
                     <div className='ColorCard'>
@@ -75,7 +111,7 @@ const UploadCardContent = observer(() => {
                             Дополнительная информация
                         </div>
                         <div className='Input'>
-                            <input value={info} onChange={e=>setInfo(e.target.value)} className='place' placeholder='placeholder' style={{ height: "101.59px" }}></input>
+                            <input value={description} onChange={e=>setInfo(e.target.value)} className='place' placeholder='placeholder' style={{ height: "101.59px" }}></input>
                         </div>
                     </div>
                 </div>
@@ -114,7 +150,7 @@ const UploadCardContent = observer(() => {
                 </div>
             </div>
 
-        </div >
+        </form >
     )
 })
 

@@ -7,6 +7,9 @@ import exclaim from '../../assets/images/exami.png';
 import gazel from '../../assets/images/gazel.png';
 import MyButton from '../UI/Button/MyButton';
 const OpenOrder = () => {
+  const navi=()=>{
+    console.log('damir krasacvh')
+  }
   return (
     <div className="orderBasic">
       <div className="leftSideOrder">
@@ -282,7 +285,7 @@ const OpenOrder = () => {
               </div>
             </div>
             <div style={{marginTop:'30px'}} >
-              <MyButton>Заказ отправлен</MyButton>
+              <MyButton onClick={navi}>Заказ отправлен</MyButton>
             </div>
           </div>
 

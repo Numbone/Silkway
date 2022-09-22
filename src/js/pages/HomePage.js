@@ -9,21 +9,22 @@ import Topnav from '../components/Topnav';
 import { fetchDevice, fetchType } from "../https/deviceAPI";
 
 const HomePage = observer(() => {
+   
     const { device } = useContext(Context)
    
-    // const result = async()=>{
-    //     let data
-    //     data= await fetchDevice().then(data=>data)
-    //     return data
+    const result = async()=>{
+        let data
+        data= await fetchDevice().then(data=>data)
+        return data
         
-    // }
-    // useEffect(()=>{
-    // // fetchType().then(data=>device.setTypes(data))
-    //     result().then(data=>device.setDevices(data.data))
+    }
+    useEffect(()=>{
+    // fetchType().then(data=>device.setTypes(data))
+        result().then(data=>device.setDevices(data.data))
         
-    // },[])
+    },[])
 
-   
+  
     return (
         <div className="home-wrapper">
             <Topnav></Topnav>
@@ -38,13 +39,14 @@ const HomePage = observer(() => {
                 {device.devices.map((item) =>
                     
                     <Card 
-                        img={item.img}
-                        title={item.name}
-                        price={item.price}
-                        rate={item.rate}
-                        // id={item.category_id}
-                        // key={item.users_id}
-                        key={item.id}
+                    img={item.image_path}
+                    title={item.name}
+                    price={item.price}
+                    rate={item.rate}
+                    key={item.id}
+                    status={item.status}
+                    description={item.description}
+                    id={item.id}
                     />
                 )}
             </div>
@@ -53,12 +55,14 @@ const HomePage = observer(() => {
             <div className="cards" >
                 {device.devices.map((item) =>
                     <Card
-                        img={item.img}
-                        title={item.title}
-                        price={item.price}
-                        rate={item.rate}
-                        id={item.id}
-                        key={item.id}
+                    img={item.image_path}
+                    title={item.name}
+                    price={item.price}
+                    rate={item.rate}
+                    key={item.id}
+                    status={item.status}
+                    description={item.description}
+                    id={item.id}
                     />
                 )}
             </div>

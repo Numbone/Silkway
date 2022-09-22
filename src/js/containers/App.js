@@ -15,7 +15,7 @@ export const App = observer(() => {
         <div className='wrapper'>
 
             <BrowserRouter>
-            <Test/>
+            
                 <Header />
                
                 <div className="wrapper__content">
