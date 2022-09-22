@@ -6,7 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { $authHost } from "../https";
 import { observer } from "mobx-react-lite";
 const Card =observer((props) => {
-    console.log(props,"props")
+   
     const location=useLocation()
     const navigate=useNavigate()
     const deleteItem =async()=>{

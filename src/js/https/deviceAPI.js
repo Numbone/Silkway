@@ -28,6 +28,6 @@ export const fetchDevice= async ()=>{
 }
 
 export const fetchOneDevice= async (id)=>{
-    const {data} = await $host.get('api/device/'+id )
+    const {data} = await $host.get('products/'+id )
     return data
 }

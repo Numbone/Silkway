@@ -79,7 +79,7 @@ const UploadCardContent = observer(() => {
                             Категория товара
                         </div>
                         <div className='Input'>
-                            <input placeholder='0' value={category} onChange={e=>setCategory(e.target.value)} className='place' placeholder='placeholder'></input>
+                            <input placeholder='0' value={category} onChange={e=>setCategory(e.target.value)} className='place' ></input>
                         </div>
                     </div>
                     <div className='Container2'>
@@ -87,7 +87,7 @@ const UploadCardContent = observer(() => {
                             Цена за штуку
                         </div>
                         <div className='Input'>
-                            <input placeholder='0'  value={(price)} onChange={e=>{setPrice(Number(e.target.value))}} className='place' placeholder='placeholder'></input>
+                            <input placeholder='0'  value={(price)} onChange={e=>{setPrice(Number(e.target.value))}} className='place' ></input>
                         </div>
                     </div>
                     <div className='Container2'>

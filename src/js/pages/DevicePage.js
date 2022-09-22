@@ -1,29 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import { Context } from "../..";
-
 import { AiFillStar } from "react-icons/ai";
-
 import pic from "../../assets/images/photoCard.png";
-
-
 import "../../scss/components/gallery.scss";
 import Card from "../components/Card";
 import MyButton from "../UI/Button/MyButton";
+import { fetchOneDevice } from "../https/deviceAPI";
+import { useParams } from "react-router-dom";
+import { upload } from "@testing-library/user-event/dist/upload";
+
 
 const DevicePage = () => {
   const { device } = useContext(Context);
-
+  const param=useParams()
+  const [uploadItem,setUploadItem]=useState({})
   const [count, setCount] = React.useState(0);
-
+  const result = async()=>{
+        let data
+        data= await fetchOneDevice(param.id).then(item=>item)
+        
+        return data
+    }
+  useEffect(()=>{
+    result().then(item=>setUploadItem(item))},
+    []
+  )
+ 
+  console.log(uploadItem)
   const images = [
     {
-      original: `${pic}`,
+      original: `${uploadItem.image_path}`,
       thumbnail: `${pic}`,
     },
     {
       original: `${pic}`,
-      thumbnail: `${pic}`,
+      thumbnail: `${uploadItem.image_path}`,
     },
     {
       original: `${pic}`,
@@ -63,8 +75,7 @@ const DevicePage = () => {
               lineHeight: "24px",
             }}
           >
-            Private label best strong skin bleaching lightening cream foot full
-            body glutathione kojic acid whitening cream for black skin
+            {uploadItem.name}
           </h2>
           <p style={{ color: "#262930" }}>Категория: Косметика</p>
           <div style={{ display: "flex", gap: "35px" }}>
@@ -87,6 +98,7 @@ const DevicePage = () => {
             <p>24 покупателя</p>
           </div>
           <p>
+            {uploadItem.description}
             Идейные соображения высшего порядка, а также перспективное
             планирование в значительной степени обусловливает важность
             экспериментов, поражающих по своей масштабности и грандиозности. Для
@@ -106,21 +118,10 @@ const DevicePage = () => {
             <div
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
-              <p>10 - 999 Штук</p>
+              <p>{uploadItem.counts} Штук</p>
               <p>$65 - $80</p>
             </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <p>1000 - 4999 Штук</p>
-              <p>$55 - $70</p>
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <p>Больше 4999 Штук</p>
-              <p>$35 - $50</p>
-            </div>
+            
           </div>
           <div
             style={{
@@ -230,7 +231,7 @@ const DevicePage = () => {
                 +
               </MyButton>
             </div>
-            <div>1572ТГ</div>
+            <div>{uploadItem.price*count}ТГ</div>
             <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
               <MyButton style={{ width: "175px" }}>В корзину</MyButton>
               <MyButton style={{ width: "175px" }}>Купить</MyButton>
