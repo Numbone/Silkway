@@ -5,8 +5,10 @@ import { useLocation, useNavigate} from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { $authHost } from "../https";
 import { observer } from "mobx-react-lite";
+import { useContext } from 'react';
+import { Context } from '../..';
 const Card =observer((props) => {
-   
+    const {user}=useContext(Context)
     const location=useLocation()
     const navigate=useNavigate()
     const deleteItem =async()=>{
@@ -21,9 +23,9 @@ const Card =observer((props) => {
             <div className="img">
                 <div className="info" onClick={()=>navigate('/device'+'/'+props.id)}><span>Доп инфо</span></div>
                 {
-                    location.pathname!='/profile' 
-                    ? <div className="bag"><BsFillCartDashFill/></div>
-                    : <div className="bag" onClick={deleteItem}><AiOutlineClose/></div>
+                    (user.role=='seller') ? <div className="bag"><BsFillCartDashFill/></div>
+                    :(user.role=='provider')? <div className="bag" onClick={deleteItem}><AiOutlineClose/></div>
+                    :<div></div>
                 }
                 
             <img style={{width:'200px',height:"200px",objectFit:'contain '}} src={props.img} alt="" />

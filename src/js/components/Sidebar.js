@@ -18,11 +18,11 @@ const Sidebar = () => {
 
                     {device.types.map((type) => 
                         <div key={type.id} className="options__var">
-                            <a href="!#">
+                            
                                 <img src={icon} alt="" />
                                 {type.name}
                                 <MdKeyboardArrowRight className="options__arrow" />
-                            </a>
+                            
                         </div>
                     )
                     }

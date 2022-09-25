@@ -9,7 +9,6 @@ import Logo from '../../assets/images/logo.svg';
 import { useContext } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
-import MyButton from "../UI/Button/MyButton";
 
 
 const Header = observer(() => {
@@ -20,9 +19,8 @@ const Header = observer(() => {
         user.setRole("")
         localStorage.removeItem('token')
     }
-    console.log(user)
     return (
-        <div className="header-wrapper">
+        <div className="header-wrapper" style={{width:'100%'}}>
             <div className='headernav'>
                 <div className="header__logo">
                     <NavLink to="/"><img src={Logo} alt="logo" /></NavLink>
@@ -49,9 +47,6 @@ const Header = observer(() => {
                 <div className="header__menu">
                     <NavLink to='/order' href="!#"><BsBagCheck className="icon" />
                         Заказы
-                    </NavLink>
-                    <NavLink to="/basket"><FiShoppingBag className="icon" />
-                        Корзина
                     </NavLink>
 
                     {user.isAuth ?

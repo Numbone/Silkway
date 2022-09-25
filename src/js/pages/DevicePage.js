@@ -14,31 +14,33 @@ import { observer } from "mobx-react-lite";
 
 
 const DevicePage = observer(() => {
-  const { device } = useContext(Context);
-  const productI=useParams()
-  const productId=Number(productI.id)
-  const [uploadItem,setUploadItem]=useState({})
+  const { user } = useContext(Context);
+  const productI = useParams()
+  const productId = Number(productI.id)
+  const [uploadItem, setUploadItem] = useState({})
   const [amount, setCount] = React.useState(0);
-  const result = async()=>{
-        let data
-        data= await fetchOneDevice(productI.id).then(item=>item)
-        return data
-    }
+  const result = async () => {
+    let data
+    data = await fetchOneDevice(productI.id).then(item => item)
+    console.log(data)
+    return data
+  }
 
-  useEffect(()=>{
-    result().then(item=>setUploadItem(item))},
+  useEffect(() => {
+    result().then(item => setUploadItem(item))
+  },
     []
   )
-  
+
   //////////////////////////////////////////////////////////
-  const uploadBasket =async()=>{
-      let data 
-      data =await sellerAdd(amount,productId).then(data=>data)
-      console.log(data)
-      return data
-      
+  const uploadBasket = async () => {
+    let data
+    data = await sellerAdd(amount, productId).then(data => data)
+    // console.log(data)
+    return data
+
   }
-  
+
   const images = [
     {
       original: `${uploadItem.image_path}`,
@@ -109,13 +111,13 @@ const DevicePage = observer(() => {
             <p>24 покупателя</p>
           </div>
           <p>
-            {uploadItem.description}
+
             Идейные соображения высшего порядка, а также перспективное
             планирование в значительной степени обусловливает важность
             экспериментов, поражающих по своей масштабности и грандиозности. Для
             современного мира социально-экономическое развитие в значительной
             степени обусловливает важность переосмысления внешнеэкономических
-            политик.
+            политик.{uploadItem.description}
           </p>
           <div
             style={{
@@ -130,9 +132,9 @@ const DevicePage = observer(() => {
               style={{ display: "flex", flexDirection: "column", gap: "8px" }}
             >
               <p>{uploadItem.counts} Штук</p>
-              <p>$65 - $80</p>
+              <p>{uploadItem.price} tenge</p>
             </div>
-            
+
           </div>
           <div
             style={{
@@ -141,7 +143,7 @@ const DevicePage = observer(() => {
               gap: "77px",
             }}
           >
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
               <p>Цвет 1:</p>
               <div
                 style={{
@@ -173,7 +175,7 @@ const DevicePage = observer(() => {
                   borderRadius: "5px",
                 }}
               ></div>
-            </div>
+            </div> */}
           </div>
           <div>
             <h2>Дополнительная информация</h2>
@@ -191,78 +193,72 @@ const DevicePage = observer(() => {
               alignItems: "center",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <MyButton
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  backgroundColor: "#FFF",
-                  color: "#00BCD4",
-                }}
-                onClick={() => {
-                  if (amount >= 1) {
-                    setCount(amount - 1);
-                  }
-                }}
-              >
-                -
-              </MyButton>
-              <div
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  backgroundColor: "#00BCD4",
-                  color: "#FFF",
-                  borderRadius: "5px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                {amount}
-              </div>
-              <MyButton
-                style={{
-                  width: "32px",
-                  height: "32px",
-                  backgroundColor: "#FFF",
-                  color: "#00BCD4",
-                }}
-                onClick={() => {
-                  setCount(amount + 1);
-                }}
-              >
-                +
-              </MyButton>
-            </div>
-            <div>{uploadItem.price*amount}ТГ</div>
-            <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
-              <MyButton onClick={uploadBasket} style={{ width: "175px" }}>В корзину</MyButton>
-              <MyButton style={{ width: "175px" }}>Купить</MyButton>
-            </div>
+            {(user.role) == 'provider'
+              ? <div></div>
+              : <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <MyButton
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      backgroundColor: "#FFF",
+                      color: "#00BCD4",
+                    }}
+                    onClick={() => {
+                      if (amount >= 1) {
+                        setCount(amount - 1);
+                      }
+                    }}
+                  >
+                    -
+                  </MyButton>
+                  <div
+                    style={{
+                      width: "48px",
+                      height: "48px",
+                      backgroundColor: "#00BCD4",
+                      color: "#FFF",
+                      borderRadius: "5px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {amount}
+                  </div>
+                  <MyButton
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      backgroundColor: "#FFF",
+                      color: "#00BCD4",
+                    }}
+                    onClick={() => {
+                      setCount(amount + 1);
+                    }}
+                  >
+                    +
+                  </MyButton>
+                </div>
+                <div>{uploadItem.price * amount}ТГ</div>
+                <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
+                  <MyButton onClick={uploadBasket} style={{ width: "175px" }}>В корзину</MyButton>
+
+                </div>
+              </>}
+
           </div>
         </div>
       </div>
-      <div className="products">Может понравится</div>
-      <button></button>
 
-      <div className="cards">
-        {device._devices.map((item) => (
-          <Card
-            img={item.img}
-            title={item.title}
-            price={item.price}
-            rate={item.rate}
-          />
-        ))}
-      </div>
+
     </div>
   );
 });
