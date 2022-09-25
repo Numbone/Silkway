@@ -15,6 +15,7 @@ const HomePage = observer(() => {
     const result = async()=>{
         let data
         data= await fetchDevice().then(data=>data)
+        console.log(data)
         return data
         
     }
@@ -36,7 +37,9 @@ const HomePage = observer(() => {
             <div className="products">Товары с высоким спросом</div>
 
             <div className="cards" >
-                {device.devices.map((item) =>
+                {device.devices===null
+                ? <div>Emplty</div>
+                 : device.devices.map((item) =>
                     
                     <Card 
                     img={item.image_path}
@@ -53,8 +56,11 @@ const HomePage = observer(() => {
             <div className="products" >Товары для вас</div>
 
             <div className="cards" >
-                {device.devices.map((item) =>
-                    <Card
+            {device.devices===null
+                ? <div>Emplty</div>
+                 : device.devices.map((item) =>
+                    
+                    <Card 
                     img={item.image_path}
                     title={item.name}
                     price={item.price}

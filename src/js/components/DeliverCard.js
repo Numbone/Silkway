@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Context } from '../..';
 import '../../scss/components/dilever.scss';
 import MyButton from '../UI/Button/MyButton';
 
-const DeliverCard = () => {
+const   DeliverCard = (props) => {
+  function sumArray(array) {
+    let sum = 0;
+    const ourArray=[...props.products_amount]
+    for (let i = 0; i < props.products_amount.length; i += 1) {
+      sum += ourArray[i];
+    }
+    
+    return sum;
+  }
+  const {basket}=useContext(Context)
   const navigate=useNavigate()
   const navi=()=>{
-    navigate('/order')
+    navigate('/order/'+props.id)
   }
   return (
     <div style={{marginTop:'30px'}}>
@@ -32,7 +43,7 @@ const DeliverCard = () => {
           Количество товара:
           </div>
           <div className='dileverCard Mean'>
-          1 500 шт.
+          {sumArray(...props.products_amount)} шт.
           </div>
         </div>
         <div className='dileverCardText'>
@@ -40,7 +51,7 @@ const DeliverCard = () => {
           Цена заказа:
           </div>
           <div className='dileverCard Mean'>
-          1 500 000₸
+          {props.total_cost}₸
           </div>
         </div>
         <div style={{marginTop:"10px"}}>

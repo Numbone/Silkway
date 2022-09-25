@@ -19,7 +19,6 @@ const LoginPage =observer(() => {
       data = await login(username,password)
       user.setUser(data.users.username)
       user.setIsAuth(true)
-      user.setUser(user)
       user.setRole(data.users.role)
       navigate("/profile")
      console.log(data)

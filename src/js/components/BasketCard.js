@@ -4,17 +4,17 @@ import del from '../../assets/images/delete.png';
 import star from '../../assets/images/Frame.png';
 import rec from '../../assets/images/Rectangle.png';
 import { Context } from '../..';
+import {  sellerDelete } from '../https/basketAPI';
+import { observer } from 'mobx-react-lite';
 
-const BasketCard = (props) => {
-    const [value,setValue]=useState(1)
-    const [price,setPrice]=useState(65)
-    function Increment(){
-        setValue(value+1)
+const BasketCard = observer((props) => {
+ 
+    const deleteItem =async(id)=>{
+        const data =await sellerDelete(id)
+        console.log(data)
+        return data
     }
-    function Decrement(){
-        setValue(value-1)
-    }
-    const {device}=useContext(Context)
+  
     return (
         <div>
            
@@ -28,7 +28,7 @@ const BasketCard = (props) => {
                     </div>
                     <div className='TextContentPrice' style={{ marginTop: '0' }}>
                         <div className='TextContentPriceText'>
-                                {price} тг
+                        {props.productCost / props.amount}  тг
                         </div>
                         <div className='TextContent Star'>
                             <div className='StarImg'>
@@ -50,24 +50,29 @@ const BasketCard = (props) => {
                         </div>
                         <div className="basketColorCountContent">
                             <div className="basketText">
-                                {value} ₸/шт
+                                {props.productCost / props.amount} ₸/шт
                             </div>
                             <div className="countBasket">
-                                <div className="divCount" onClick={Decrement}>
+                                {/* <div className="divCount" onClick={Decrement}>
                                     -
-                                </div>
+                                </div> */}
                                 <div className="TotalCount">
-                                    {value}
+                                    {props.amount}
                                 </div>
-                                <div className="divCount" onClick={Increment}>
+                                {/* <div className="divCount" onClick={Increment}>
                                     +
-                                </div>
+                                </div> */}
                             </div>
                             <div className="basketText">
-                                Итог:{price * value}
+                                Итог:{props.productCost}
                             </div>
-                            <div className="topBasketCardImg">
+                            <div  className="topBasketCardImg">
+                                <button 
+                                    style={{border:'none',width:'100%',backgroundColor:'white'}}  
+                                    onClick={()=>deleteItem(props.id)}
+                                    >
                                 <img src={del} alt="tab" />
+                                </button>
                             </div>
                         </div>
 
@@ -77,6 +82,6 @@ const BasketCard = (props) => {
             </div >
         </div >
     )
-}
+})
 
 export default BasketCard

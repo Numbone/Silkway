@@ -9,10 +9,17 @@ import Logo from '../../assets/images/logo.svg';
 import { useContext } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
+import MyButton from "../UI/Button/MyButton";
 
 
 const Header = observer(() => {
     const { user } = useContext(Context)
+    const logout=()=>{
+        user.setUser({})
+        user.setIsAuth(false)
+        user.setRole("")
+        localStorage.removeItem('token')
+    }
     console.log(user)
     return (
         <div className="header-wrapper">
@@ -48,9 +55,13 @@ const Header = observer(() => {
                     </NavLink>
 
                     {user.isAuth ?
-                        <div>
-                            <NavLink to="/profile"> Damir</NavLink>
+                        <div style={{width:'100%',display:'flex'}} >
+                            <NavLink to="/profile"> {user.role}.{user.user}</NavLink>
+                            <button 
+                            style={{border:'none',width:'100%',color:'#1B1D28',zIndex:'1',backgroundColor:'white',fontSize:'15px',fontWeight:'600',fontFamily:'Arial, Helvetica, sans-serif',fontStyle:'normal'}} 
+                            onClick={logout}>Logout</button>
                         </div>
+                        
                         :
                         <div  style={{width:'300px',display:'flex'}}>
                             <NavLink to="/login" className="last__link"><RiLoginBoxLine className="icon" />Вход <span>/</span></NavLink>

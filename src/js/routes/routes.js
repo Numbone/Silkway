@@ -38,7 +38,7 @@ export const authRoutes=[
         element:<StatisticPage/>
     },
     {
-        path:'/order',
+        path:'/order/:id',
         element:<OpenOrder/>
     },
     {
@@ -46,6 +46,31 @@ export const authRoutes=[
         element:<BasketOrder/>
     }
 
+]
+export const providerRoutes=[
+    {
+        path:'/profile',
+        element:<ProfilePage/>
+    },
+    {
+        path:'/uploadItem',
+        element:<UploadPage/>
+    },
+    {
+        path:'/statistic',
+        element:<StatisticPage/>
+    },
+    {
+        path:'/order/:id',
+        element:<OpenOrder/>
+    },
+    {
+        path:'/store',
+        element:<StorePage/>
+    },
+]
+const sellerRoutes=[
+    
 ]
 export const publicRoutes=[
     {

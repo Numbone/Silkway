@@ -10,13 +10,12 @@ import Card from './Card'
 
 const Product = observer(() => {
     const navigate=useNavigate()
+  
     const { device } = useContext(Context)
     const fetchProviderProduct= async()=>{
-        const {data} =await $authHost.get('api/provider/',{
-                "Access-Control-Allow-Origin": "*",
-            })
-            console.log(data.products)
-            return data.products.data
+        const {data} =await $authHost.get('api/provider/products/user')
+            console.log(data)
+            return data.data
     }   
     useEffect(()=>{
         fetchProviderProduct().then(item=>device.setProviderDevice(item))
@@ -35,7 +34,9 @@ const Product = observer(() => {
                         </div>
                     </div>
                     <div className="card_products"  >
-                    {device._providerDevice.map(item=>
+                    {device._providerDevice==null
+                    ? <div>Empty</div>
+                    : device._providerDevice.map(item=>
                     
                         <Card   img={item.image_path}
                                 title={item.name}

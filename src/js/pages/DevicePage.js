@@ -9,25 +9,36 @@ import MyButton from "../UI/Button/MyButton";
 import { fetchOneDevice } from "../https/deviceAPI";
 import { useParams } from "react-router-dom";
 import { upload } from "@testing-library/user-event/dist/upload";
+import { sellerAdd } from "../https/basketAPI";
+import { observer } from "mobx-react-lite";
 
 
-const DevicePage = () => {
+const DevicePage = observer(() => {
   const { device } = useContext(Context);
-  const param=useParams()
+  const productI=useParams()
+  const productId=Number(productI.id)
   const [uploadItem,setUploadItem]=useState({})
-  const [count, setCount] = React.useState(0);
+  const [amount, setCount] = React.useState(0);
   const result = async()=>{
         let data
-        data= await fetchOneDevice(param.id).then(item=>item)
-        
+        data= await fetchOneDevice(productI.id).then(item=>item)
         return data
     }
+
   useEffect(()=>{
     result().then(item=>setUploadItem(item))},
     []
   )
- 
-  console.log(uploadItem)
+  
+  //////////////////////////////////////////////////////////
+  const uploadBasket =async()=>{
+      let data 
+      data =await sellerAdd(amount,productId).then(data=>data)
+      console.log(data)
+      return data
+      
+  }
+  
   const images = [
     {
       original: `${uploadItem.image_path}`,
@@ -196,8 +207,8 @@ const DevicePage = () => {
                   color: "#00BCD4",
                 }}
                 onClick={() => {
-                  if (count >= 1) {
-                    setCount(count - 1);
+                  if (amount >= 1) {
+                    setCount(amount - 1);
                   }
                 }}
               >
@@ -215,7 +226,7 @@ const DevicePage = () => {
                   justifyContent: "center",
                 }}
               >
-                {count}
+                {amount}
               </div>
               <MyButton
                 style={{
@@ -225,15 +236,15 @@ const DevicePage = () => {
                   color: "#00BCD4",
                 }}
                 onClick={() => {
-                  setCount(count + 1);
+                  setCount(amount + 1);
                 }}
               >
                 +
               </MyButton>
             </div>
-            <div>{uploadItem.price*count}ТГ</div>
+            <div>{uploadItem.price*amount}ТГ</div>
             <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
-              <MyButton style={{ width: "175px" }}>В корзину</MyButton>
+              <MyButton onClick={uploadBasket} style={{ width: "175px" }}>В корзину</MyButton>
               <MyButton style={{ width: "175px" }}>Купить</MyButton>
             </div>
           </div>
@@ -254,6 +265,6 @@ const DevicePage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default DevicePage;

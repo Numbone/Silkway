@@ -1,9 +1,31 @@
-import React from 'react'
+import { makeAutoObservable } from "mobx"
 
-const BasketStore = () => {
-  return (
-    <div>BasketStore</div>
-  )
-}
+ export default class BasketStore{
+    constructor(){
+        this._basket=[
+            
+        ]
+        this._transaction={}
+        this._onetransaction={}
+        makeAutoObservable(this)
+    }
 
-export default BasketStore
+    setBasket(array){
+        this._basket=array
+    }
+    setTransaction(trans){
+        this._transaction=trans
+    }
+    setOneTransaction(data){
+        this._onetransaction=data
+    }
+    get basket(){
+        return this._basket
+    }
+    get transaction(){
+        return this._transaction
+    }
+    get onetransaction(){
+        return this._onetransaction
+    }
+ }
