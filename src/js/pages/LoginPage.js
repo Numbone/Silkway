@@ -9,24 +9,31 @@ import { login } from '../https/userAPI';
 import MyButton from '../UI/Button/MyButton';
 import MyInput from '../UI/Input/Input';
 
-const LoginPage =observer(() => {
-  const {user}=useContext(Context)
-  const navigate= useNavigate()
-  const [username,setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const signIn = async() =>{
-      let data
-      data = await login(username,password)
-      user.setUser(data.users.username)
-      user.setIsAuth(true)
-      user.setRole(data.users.role)
-      navigate("/profile")
-     console.log(data)
-}
+const LoginPage = observer(() => {
+  const { user } = useContext(Context)
+  const navigate = useNavigate()
+  const [username, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const signIn = async () => {
+    let data
+    data = await login(username, password)
+    user.setUser(data.users.username)
+    user.setIsAuth(true)
+    user.setRole(data.users.role)
+    Navigator(user.role)
+    console.log(data)
+  }
+  function Navigator(role){
+    if (role=='seller'){
+      return navigate('/deliver')
+    }else if (role=="provider"){
+      return navigate('/profile')
+    }
+  }
 
   return (
     <div className="Auth">
-      
+
       <div className="Auth__content">
         <div className="address">
           <div className="labelForInput">
@@ -34,7 +41,7 @@ const LoginPage =observer(() => {
               Адрес электронной почты:
             </div>
           </div>
-          <MyInput value={username} onChange={e=>setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
+          <MyInput value={username} onChange={e => setEmail(e.target.value)} placeholder="dsadasdasr@gmail.com"></MyInput>
 
         </div>
         <div className="password">
@@ -43,19 +50,19 @@ const LoginPage =observer(() => {
               Пароль:
             </div>
           </div>
-          <MyInput type='password' value={password} onChange={e=>setPassword(e.target.value)} placeholder="Введите пароль"></MyInput>
+          <MyInput type='password' value={password} onChange={e => setPassword(e.target.value)} placeholder="Введите пароль"></MyInput>
 
         </div>
-        <div  className="Btn">
-           <MyButton  onClick={signIn} >Войти</MyButton> 
+        <div className="Btn">
+          <MyButton onClick={signIn} >Войти</MyButton>
         </div>
         <div className="Text">
           Нету аккаунта?   <NavLink to="/registration">  Зарегистрируйтесь</NavLink>
         </div>
       </div>
-      
+
     </div>
   )
 }
-) 
+)
 export default LoginPage;

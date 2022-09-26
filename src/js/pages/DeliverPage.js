@@ -6,12 +6,12 @@ import ProfileTopImage from '../components/ProfileTopImage'
 const DeliverPage = () => {
   return (
     <div>
-           <div className='TopImg'>
+      <div className='TopImg'>
         <ProfileTopImage />
       </div   >
-      <div className='Content' style={{display:'flex',justifyContent:''}}>
+      <div className='Content' style={{ display: 'flex', justifyContent: '' }}>
         <ProfileCard />
-        <Deliver style={{marginTop:"30px"}} />
+        <Deliver style={{ marginTop: "30px" }} />
       </div>
     </div>
   )

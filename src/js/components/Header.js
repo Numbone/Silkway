@@ -13,14 +13,14 @@ import { observer } from "mobx-react-lite";
 
 const Header = observer(() => {
     const { user } = useContext(Context)
-    const logout=()=>{
+    const logout = () => {
         user.setUser({})
         user.setIsAuth(false)
         user.setRole("")
         localStorage.removeItem('token')
     }
     return (
-        <div className="header-wrapper" style={{width:'100%'}}>
+        <div className="header-wrapper" style={{ width: '100%' }}>
             <div className='headernav'>
                 <div className="header__logo">
                     <NavLink to="/"><img src={Logo} alt="logo" /></NavLink>
@@ -32,11 +32,11 @@ const Header = observer(() => {
                             <button className="dropbtn">Продукты
                                 <IoIosArrowDown className="icon__arrow" />
                             </button>
-                            <div className="dropdown-content">
+                            {/* <div className="dropdown-content">
                                 <a href="!#">Link 1</a>
                                 <a href="!#">Link 2</a>
                                 <a href="!#">Link 3</a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="header__search">
@@ -45,20 +45,21 @@ const Header = observer(() => {
                 </div>
 
                 <div className="header__menu">
-                    <NavLink to='/order' href="!#"><BsBagCheck className="icon" />
+                    <NavLink to='/deliver' href="!#"><BsBagCheck className="icon" />
                         Заказы
                     </NavLink>
 
                     {user.isAuth ?
-                        <div style={{width:'100%',display:'flex'}} >
-                            <NavLink to="/profile"> {user.role}.{user.user}</NavLink>
-                            <button 
-                            style={{border:'none',width:'100%',color:'#1B1D28',zIndex:'1',backgroundColor:'white',fontSize:'15px',fontWeight:'600',fontFamily:'Arial, Helvetica, sans-serif',fontStyle:'normal'}} 
-                            onClick={logout}>Logout</button>
+                        <div style={{ width: '100%', display: 'flex' }} >
+                            <NavLink to="/deliver"> {user.role}.{user.user}</NavLink>
+                            <button
+                                style={{ border: 'none', width: '100%', color: '#1B1D28', zIndex: '1', backgroundColor: 'white', fontSize: '15px', fontWeight: '600', fontFamily: 'Arial, Helvetica, sans-serif', fontStyle: 'normal' }}
+                                onClick={logout}>Logout
+                            </button>
                         </div>
-                        
+
                         :
-                        <div  style={{width:'300px',display:'flex'}}>
+                        <div style={{ width: '300px', display: 'flex' }}>
                             <NavLink to="/login" className="last__link"><RiLoginBoxLine className="icon" />Вход <span>/</span></NavLink>
                             <NavLink to="/registration" >Регистрация</NavLink>
                         </div>

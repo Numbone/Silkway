@@ -4,13 +4,13 @@ import { Context } from "../..";
 import { AiFillStar } from "react-icons/ai";
 import pic from "../../assets/images/photoCard.png";
 import "../../scss/components/gallery.scss";
-import Card from "../components/Card";
 import MyButton from "../UI/Button/MyButton";
 import { fetchOneDevice } from "../https/deviceAPI";
 import { useParams } from "react-router-dom";
-import { upload } from "@testing-library/user-event/dist/upload";
 import { sellerAdd } from "../https/basketAPI";
 import { observer } from "mobx-react-lite";
+import Modal from "../popup/Modal";
+
 
 
 const DevicePage = observer(() => {
@@ -40,27 +40,29 @@ const DevicePage = observer(() => {
     return data
 
   }
+  ////// Modal popup
+  const [modalActive, setModalactive] = useState(true)
 
   const images = [
     {
       original: `${uploadItem.image_path}`,
-      thumbnail: `${pic}`,
-    },
-    {
-      original: `${pic}`,
       thumbnail: `${uploadItem.image_path}`,
     },
     {
-      original: `${pic}`,
-      thumbnail: `${pic}`,
+      original: `${uploadItem.image_path}`,
+      thumbnail: `${uploadItem.image_path}`,
     },
     {
-      original: `${pic}`,
-      thumbnail: `${pic}`,
+      original: `${uploadItem.image_path}`,
+      thumbnail: `${uploadItem.image_path}`,
     },
     {
-      original: `${pic}`,
-      thumbnail: `${pic}`,
+      original: `${uploadItem.image_path}`,
+      thumbnail: `${uploadItem.image_path}`,
+    },
+    {
+      original: `${uploadItem.image_path}`,
+      thumbnail: `${uploadItem.image_path}`,
     },
   ];
 
@@ -193,7 +195,7 @@ const DevicePage = observer(() => {
               alignItems: "center",
             }}
           >
-            {(user.role) == 'provider'
+            {(user.role) == 'provider' || (user.role)==""
               ? <div></div>
               : <>
                 <div
@@ -257,7 +259,6 @@ const DevicePage = observer(() => {
           </div>
         </div>
       </div>
-
 
     </div>
   );

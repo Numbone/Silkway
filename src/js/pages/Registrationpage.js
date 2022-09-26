@@ -113,7 +113,7 @@ const Registrationpage = () => {
                                     <span style={{ color: "#00BCD4" }}>Соглашение о членстве в Alibaba.com</span>
                                 </div>
                             </div>
-                            <div className="Btn" onClick={()=>navigate('/profile')}>
+                            <div className="Btn" onClick={()=>navigate('/login')}>
                                 <MyButton onClick={signIn} style={{ width: '347px', innerHeight: '50px', fontSize: '24px', marginTop: '35px',marginRight:'50px' }}>Зарегистрироваться</MyButton>
                             </div>
                             <div className="Text">

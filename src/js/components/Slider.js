@@ -24,10 +24,10 @@ import '../../scss/components/slider.scss';
 // const delay = 2500;
 
  const pictures = [
-  "https://cdn.shopify.com/s/files/1/0070/7032/files/trending-products_c8d0d15c-9afc-47e3-9ba2-f7bad0505b9b.png?format=jpg&quality=90&v=1614559651", 
-  "https://cdn-blog.credihealth.com/wp-content/webp-express/webp-images/uploads/2018/08/9454520-1024x743.jpg.webp", 
-  "https://cdn.thewirecutter.com/wp-content/media/2022/06/android-phone-2048px-0004-3x2-1.jpg?auto=webp&quality=60&crop=1.91:1&width=1200", 
-  "https://it4profit.com/share/common/201230/cq5dam.web.1280.1280.jpeg", 
+  "https://s12.stc.all.kpcdn.net/family/wp-content/uploads/2022/01/repchatiy_luk_polza_i_vred_oblogka-960x540.jpg", 
+  "https://baron.kz/image/cache/catalog/catalog/milk_egg/foodmaster/fm_moloko3-1200x800.jpg", 
+  "https://baron.kz/image/cache/catalog/catalog/milk_egg/yajca-fermerskie-1200x800.jpg",
+  "https://povarixa.ru/images/content/medium/6dcbe8dbe8a40ba10371dc8d9154bdae.jpg", 
   'https://it4profit.com/share/common/201230/image.jpg'
 ];
  const delay = 2500;
