@@ -35,7 +35,7 @@ const   DeliverCard = (props) => {
           Номер заказа:
           </div>
           <div className='dileverCard Mean'>
-          0205122341
+          {props.id}
           </div>
         </div>
         <div className='dileverCardText'>
@@ -52,6 +52,14 @@ const   DeliverCard = (props) => {
           </div>
           <div className='dileverCard Mean'>
           {props.total_cost}₸
+          </div>
+        </div>
+        <div className='dileverCardText'>
+          <div className='divelerCard Key'>
+          Статус заказа:
+          </div>
+          <div className='dileverCard Mean' style={{color:'green'}}>
+          {props.status}
           </div>
         </div>
         <div style={{marginTop:"10px"}}>

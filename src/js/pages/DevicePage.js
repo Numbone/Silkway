@@ -10,9 +10,6 @@ import { useParams } from "react-router-dom";
 import { sellerAdd } from "../https/basketAPI";
 import { observer } from "mobx-react-lite";
 import Modal from "../popup/Modal";
-
-
-
 const DevicePage = observer(() => {
   const { user } = useContext(Context);
   const productI = useParams()
@@ -34,15 +31,30 @@ const DevicePage = observer(() => {
 
   //////////////////////////////////////////////////////////
   const uploadBasket = async () => {
-    let data
-    data = await sellerAdd(amount, productId).then(data => data)
-    // console.log(data)
-    return data
+    try {
+      let data
+      data = await sellerAdd(amount, productId).then(data => data)
+      setModalactive(true)
+      return data
+    } catch (error) {
+      if (error.response.status==400){
+        setModalactive(true)
+      }
+    }
+
 
   }
   ////// Modal popup
   const [modalActive, setModalactive] = useState(true)
+  const [responce,setResponce]=useState({})
+  function setError(){
+    if (responce.response.status=400){
 
+    }
+  }
+
+
+  ////react-image-gallery
   const images = [
     {
       original: `${uploadItem.image_path}`,
@@ -67,85 +79,86 @@ const DevicePage = observer(() => {
   ];
 
   return (
-    <div className="gallery">
-      <div style={{ display: "flex", gap: "25px" }}>
-        <div className="gallery-left">
-          <ImageGallery
-            items={images}
-            showPlayButton={false}
-            showNav={false}
-            showFullscreenButton={false}
-            disableKeyDown={true}
-          />
-        </div>
+    <>
+      <div className="gallery">
+        <div style={{ display: "flex", gap: "25px" }}>
+          <div className="gallery-left">
+            <ImageGallery
+              items={images}
+              showPlayButton={false}
+              showNav={false}
+              showFullscreenButton={false}
+              disableKeyDown={true}
+            />
+          </div>
 
-        <div
-          className="gallery-right"
-          style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-        >
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "800px",
-              lineHeight: "24px",
-            }}
+          <div
+            className="gallery-right"
+            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
-            {uploadItem.name}
-          </h2>
-          <p style={{ color: "#262930" }}>Категория: Косметика</p>
-          <div style={{ display: "flex", gap: "35px" }}>
+            <h2
+              style={{
+                fontSize: "18px",
+                fontWeight: "800px",
+                lineHeight: "24px",
+              }}
+            >
+              {uploadItem.name}
+            </h2>
+            <p style={{ color: "#262930" }}>Категория: Косметика</p>
+            <div style={{ display: "flex", gap: "35px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  fontSize: "14px",
+                }}
+              >
+                <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
+                <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
+                <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
+                <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
+                <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
+                <p style={{ fontWeight: "800" }}>4.5</p>
+              </div>
+              <p>12 отзывов</p>
+              <p>24 покупателя</p>
+            </div>
+            <p>
+
+              Идейные соображения высшего порядка, а также перспективное
+              планирование в значительной степени обусловливает важность
+              экспериментов, поражающих по своей масштабности и грандиозности. Для
+              современного мира социально-экономическое развитие в значительной
+              степени обусловливает важность переосмысления внешнеэкономических
+              политик.{uploadItem.description}
+            </p>
+            <div
+              style={{
+                display: "flex",
+                gap: "95px",
+                borderTop: "1px solid #DEE6EE",
+                borderBottom: "1px solid #DEE6EE",
+                padding: "18px 0",
+              }}
+            >
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+              >
+                <p>{uploadItem.counts} Штук</p>
+                <p>{uploadItem.price} tenge</p>
+              </div>
+
+            </div>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "4px",
-                fontSize: "14px",
+                gap: "77px",
               }}
             >
-              <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
-              <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
-              <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
-              <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
-              <AiFillStar className="icon" style={{ color: "#33C9DD" }} />
-              <p style={{ fontWeight: "800" }}>4.5</p>
-            </div>
-            <p>12 отзывов</p>
-            <p>24 покупателя</p>
-          </div>
-          <p>
-
-            Идейные соображения высшего порядка, а также перспективное
-            планирование в значительной степени обусловливает важность
-            экспериментов, поражающих по своей масштабности и грандиозности. Для
-            современного мира социально-экономическое развитие в значительной
-            степени обусловливает важность переосмысления внешнеэкономических
-            политик.{uploadItem.description}
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: "95px",
-              borderTop: "1px solid #DEE6EE",
-              borderBottom: "1px solid #DEE6EE",
-              padding: "18px 0",
-            }}
-          >
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "8px" }}
-            >
-              <p>{uploadItem.counts} Штук</p>
-              <p>{uploadItem.price} tenge</p>
-            </div>
-
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "77px",
-            }}
-          >
-            {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
               <p>Цвет 1:</p>
               <div
                 style={{
@@ -178,89 +191,98 @@ const DevicePage = observer(() => {
                 }}
               ></div>
             </div> */}
-          </div>
-          <div>
-            <h2>Дополнительная информация</h2>
-            <p>Казахстан, г.Нур-султан, Малайсары 37</p>
-            <p>+7 (777) 777-77-77</p>
-            <p>tooNuras@gmail.com</p>
-          </div>
+            </div>
+            <div>
+              <h2>Дополнительная информация</h2>
+              <p>Казахстан, г.Нур-султан, Малайсары 37</p>
+              <p>+7 (777) 777-77-77</p>
+              <p>tooNuras@gmail.com</p>
+            </div>
 
-          <div
-            style={{
-              display: "flex",
-              gap: "30px",
-              marginTop: "auto",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {(user.role) == 'provider' || (user.role)==""
-              ? <div></div>
-              : <>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <MyButton
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      backgroundColor: "#FFF",
-                      color: "#00BCD4",
-                    }}
-                    onClick={() => {
-                      if (amount >= 1) {
-                        setCount(amount - 1);
-                      }
-                    }}
-                  >
-                    -
-                  </MyButton>
+            <div
+              style={{
+                display: "flex",
+                gap: "30px",
+                marginTop: "auto",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {(user.role) == 'provider' || (user.role) == ""
+                ? <div></div>
+                : <>
                   <div
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      backgroundColor: "#00BCD4",
-                      color: "#FFF",
-                      borderRadius: "5px",
                       display: "flex",
-                      alignItems: "center",
                       justifyContent: "center",
+                      alignItems: "center",
+                      gap: "8px",
                     }}
                   >
-                    {amount}
+                    <MyButton
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        backgroundColor: "#FFF",
+                        color: "#00BCD4",
+                      }}
+                      onClick={() => {
+                        if (amount >= 1) {
+                          setCount(amount - 1);
+                        }
+                      }}
+                    >
+                      -
+                    </MyButton>
+                    <div
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        backgroundColor: "#00BCD4",
+                        color: "#FFF",
+                        borderRadius: "5px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {amount}
+                    </div>
+                    <MyButton
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        backgroundColor: "#FFF",
+                        color: "#00BCD4",
+                      }}
+                      onClick={() => {
+                        setCount(amount + 1);
+                      }}
+                    >
+                      +
+                    </MyButton>
                   </div>
-                  <MyButton
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      backgroundColor: "#FFF",
-                      color: "#00BCD4",
-                    }}
-                    onClick={() => {
-                      setCount(amount + 1);
-                    }}
-                  >
-                    +
-                  </MyButton>
-                </div>
-                <div>{uploadItem.price * amount}ТГ</div>
-                <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
-                  <MyButton onClick={uploadBasket} style={{ width: "175px" }}>В корзину</MyButton>
+                  <div>{uploadItem.price * amount}ТГ</div>
+                  <div style={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
+                    <MyButton onClick={uploadBasket} style={{ width: "175px" }}>В корзину</MyButton>
 
-                </div>
-              </>}
+                  </div>
+                </>}
 
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div>
+      <Modal active={modalActive} setActive={setModalactive}>
+        <p>Товар добавлен в корзину</p>
+      </Modal>
+      {
+        responce.response.status ==400 
+        ?<Modal  active={modalActive} setActive={setModalactive}> Вы уже добавили корзину</Modal>
+        :<p>123</p>
+      }
+    </>
   );
 });
 

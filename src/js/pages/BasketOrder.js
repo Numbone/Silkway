@@ -12,7 +12,7 @@ import { Context } from '../..';
 import { $authHost } from '../https';
 
 const BasketOrder = () => {
-    const { basket,user } = useContext(Context)
+    const { basket, user } = useContext(Context)
     const [result, setResult] = useState({})
     const OrderId = async () => {
         const data = await providerOneTransaction(basket.onetransaction.id)
@@ -26,8 +26,8 @@ const BasketOrder = () => {
         const data = await $authHost.patch('api/' + user.role + '/transaction/confirm/' + id)
         return data
     }
-    
-   
+
+
     return (
         <div style={{ display: "flex" }}>
             <div className="leftSideBasket">
@@ -141,7 +141,13 @@ const BasketOrder = () => {
                         </div>
                     </div>
                     <div>
-                        <MyButton onClick={()=>{SendOrder(basket.onetransaction.id)}} style={{ width: '225px', fontSize: '16px', marginTop: '15px' }}><NavLink style={{ textDecoration: 'none', color: 'white' }} to="/basket2">Оплатить заказ</NavLink></MyButton>
+                        <MyButton onClick={() => { SendOrder(basket.onetransaction.id) }} style={{ width: '225px', fontSize: '16px', marginTop: '15px' }}>
+                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/basket2">
+                                {(user.role == 'provider') ? <p>Одобрить заказ</p>
+                                    : (user.role == "seller") ? <p>Оплатить заказ</p>
+                                        : <p>Authorize</p>}
+                            </NavLink>
+                        </MyButton>
                     </div>
                 </div>
             </div>

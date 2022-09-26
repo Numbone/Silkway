@@ -8,16 +8,18 @@ import DeliverCard from './DeliverCard';
 const Deliver = observer(() => {
   const { basket, user } = useContext(Context)
   const [result, setResult] = useState([])
-  console.log(user.role)
+  ///// async requrst to getOrder
   const getOrder = async () => {
     const { data } = await $authHost.get('api/' + user.role + '/' + 'transaction/')
     basket.setTransaction(data)
+    console.log(data)
     return data
   }
 
   useEffect(() => {
     getOrder().then(data => setResult(data))
   }, [])
+
 
   return (
     <div>
@@ -40,7 +42,8 @@ const Deliver = observer(() => {
               provider_id={item.provider_id}
               seller_id={item.seller_id}
               total_cost={item.total_cost}
-              key={item.id} />)}
+              key={item.id}
+              status={item.status} />)}
 
 
       </div>
