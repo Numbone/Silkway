@@ -30,28 +30,29 @@ const DevicePage = observer(() => {
   )
 
   //////////////////////////////////////////////////////////
+  const [responce, setResponce] = useState({})
   const uploadBasket = async () => {
     try {
       let data
       data = await sellerAdd(amount, productId).then(data => data)
+      setResponce(data)
       setModalactive(true)
       return data
     } catch (error) {
-      if (error.response.status==400){
+      if (error.response.status === 400) {
+        setResponce(error)
         setModalactive(true)
       }
     }
 
 
   }
-  ////// Modal popup
+  ////// Modal popup  
+  const [modalActive1, setModalactive1] = useState(false)
   const [modalActive, setModalactive] = useState(true)
-  const [responce,setResponce]=useState({})
-  function setError(){
-    if (responce.response.status=400){
 
-    }
-  }
+  console.log(responce)
+
 
 
   ////react-image-gallery
@@ -274,14 +275,18 @@ const DevicePage = observer(() => {
         </div>
 
       </div>
-      <Modal active={modalActive} setActive={setModalactive}>
-        <p>Товар добавлен в корзину</p>
-      </Modal>
-      {
-        responce.response.status ==400 
-        ?<Modal  active={modalActive} setActive={setModalactive}> Вы уже добавили корзину</Modal>
-        :<p>123</p>
-      }
+      {(user.role) === 'seller' && (responce.status === 200)
+        ? <Modal active={modalActive} setActive={setModalactive}>
+          <p>Товар добавлен в корзину</p>
+        </Modal>
+        : responce.response === undefined ? <p></p>
+          : (user.role) === 'seller' && (responce.response.status === 400)
+            ? <Modal active={modalActive} setActive={setModalactive}>
+              <p>добавлен в корзину уже</p>
+            </Modal>
+            : <p></p>}
+
+
     </>
   );
 });
