@@ -32,11 +32,12 @@ const OpenOrder = () => {
     return data
   }
   function naviForSellerAndProvider(role){
-    if (role=="seller"){
-      return navigate('/basket')
-    }else if (role=="provider"){
-      return navigate('/basket2')
-    }
+    // if (role=="seller"){
+    //   return navigate('/basket')
+    // }else if (role=="provider"){
+    //   return navigate('/basket2')
+    // }
+    return navigate('/deliver')
   }
   
   const navi=(id)=>{

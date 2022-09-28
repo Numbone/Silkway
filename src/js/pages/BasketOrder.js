@@ -142,7 +142,7 @@ const BasketOrder = () => {
                     </div>
                     <div>
                         <MyButton onClick={() => { SendOrder(basket.onetransaction.id) }} style={{ width: '225px', fontSize: '16px', marginTop: '15px' }}>
-                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/basket2">
+                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/deliver">
                                 {(user.role == 'provider') ? <p>Одобрить заказ</p>
                                     : (user.role == "seller") ? <p>Оплатить заказ</p>
                                         : <p>Authorize</p>}

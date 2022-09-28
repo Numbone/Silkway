@@ -146,7 +146,7 @@ const Basket = observer(() => {
           </div>
           <div>
             <MyButton  onClick={()=>{sellerBuy(basket.onetransaction.id)}} style={{width:'225px',fontSize:'16px',marginTop:'15px'}}>
-              <NavLink style={{textDecoration:'none',color:'white'}} to="/basket2">
+              <NavLink style={{textDecoration:'none',color:'white'}} to="/deliver">
                 Оформить заказ
                 </NavLink>
                 </MyButton>

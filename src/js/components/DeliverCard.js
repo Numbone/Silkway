@@ -14,10 +14,24 @@ const   DeliverCard = (props) => {
     
     return sum;
   }
-  const {basket}=useContext(Context)
+  const {basket,user}=useContext(Context)
   const navigate=useNavigate()
   const navi=()=>{
-    navigate('/order/'+props.id)
+    if (user.role==="seller" && props.status==="transaction created"){
+      navigate('/order/'+props.id)
+    }
+    if (user.role==="provider" && props.status==="transaction accepted from seller"){
+      navigate('/order/'+props.id)
+    }
+    if (user.role==="seller" && props.status==="transaction accepted from provider"){
+      navigate('/basket/')
+    }
+    if (user.role==="provider" && props.status==="transaction buying"){
+      navigate('/basket2/')
+    }
+    if (user.role==="seller" && props.status==="transaction sended"){
+      navigate('/basket2/')
+    }
   }
   return (
     <div style={{marginTop:'30px'}}>
