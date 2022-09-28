@@ -48,7 +48,6 @@ const DevicePage = observer(() => {
 
   }
   ////// Modal popup  
-  const [modalActive1, setModalactive1] = useState(false)
   const [modalActive, setModalactive] = useState(true)
 
   console.log(responce)
