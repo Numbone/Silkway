@@ -18,10 +18,10 @@ const Card =observer((props) => {
     return (
     <div className="card" >
        
-        <div className="content">
+        <div className="content" onClick={()=>navigate('/device'+'/'+props.id)}>
             
             <div className="img">
-                <div className="info" onClick={()=>navigate('/device'+'/'+props.id)}><span>Доп инфо</span></div>
+                <div className="info" ><span>Доп инфо</span></div>
                 {
                     (user.role=='seller') ? <div className="bag"><BsFillCartDashFill/></div>
                     :(user.role=='provider')? <div className="bag" onClick={deleteItem}><AiOutlineClose/></div>
